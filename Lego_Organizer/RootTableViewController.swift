@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftyJSON
 
 class RootTableViewController: UITableViewController {
     
@@ -60,7 +61,7 @@ class RootTableViewController: UITableViewController {
         }
         
         if self.apiKey != "" {
-            let postEndpoint: String = "https://rebrickable.com/api/get_part?key=9BUbjlV9IF&part_id=30162"
+            let postEndpoint: String = "https://rebrickable.com/api/get_part?key=9BUbjlV9IF&part_id=30162&format=json"
             guard let url = NSURL(string: postEndpoint) else {
                 print("Error: cannot create URL")
                 return
@@ -72,9 +73,22 @@ class RootTableViewController: UITableViewController {
             
             let task = session.dataTaskWithRequest(urlRequest, completionHandler: { (data, response, error) in
                 // do stuff with response, data & error here
-                print("data: ", data)
                 
-            })
+                if error != nil {
+                    print("error: ", error)
+                } else {
+                    if let data = data {
+                        do {
+                            let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                            print("jsonResult: ", jsonDict)
+
+                        } catch {
+                            print("something went wrong")
+                        }
+                    }
+                }
+                
+                })
             task.resume()
         }
         
