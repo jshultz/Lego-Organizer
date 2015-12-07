@@ -47,8 +47,6 @@ class ProfileViewController: UIViewController {
 //        performSegueWithIdentifier("showProfile", sender: self)
     }
     
-    
-    
     let realm = try! Realm()
     var profile:Profile? = nil
     var notificationToken: NotificationToken?

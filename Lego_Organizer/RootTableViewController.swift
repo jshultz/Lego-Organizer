@@ -7,28 +7,19 @@
 //
 
 import UIKit
+import RealmSwift
 
 class RootTableViewController: UITableViewController {
+    
+    let realm = try! Realm()
+    
+    var apiKey:String = ""
+    
+    @IBOutlet var legoTable: UITableView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let postEndpoint: String = "http://jsonplaceholder.typicode.com/posts/1"
-        guard let url = NSURL(string: postEndpoint) else {
-            print("Error: cannot create URL")
-            return
-        }
-        let urlRequest = NSURLRequest(URL: url)
-        
-        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let session = NSURLSession(configuration: config)
-        
-        let task = session.dataTaskWithRequest(urlRequest, completionHandler: { (data, response, error) in
-            // do stuff with response, data & error here
-            print("data: ", data)
-            
-        })
-        task.resume()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -52,6 +43,41 @@ class RootTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        setupUI()
+    }
+    
+    func setupUI() {
+        self.title = "Lego Organizer"
+        
+        if let profile = realm.objects(Profile).first {
+            print("profile.apiKey", profile.apiKey)
+            self.apiKey = String(UTF8String: profile.apiKey)!
+            print("self.apiKey 2:", self.apiKey)
+            self.legoTable.reloadData()
+        }
+        
+        if self.apiKey != "" {
+            let postEndpoint: String = "https://rebrickable.com/api/get_part?key=9BUbjlV9IF&part_id=30162"
+            guard let url = NSURL(string: postEndpoint) else {
+                print("Error: cannot create URL")
+                return
+            }
+            let urlRequest = NSURLRequest(URL: url)
+            
+            let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+            let session = NSURLSession(configuration: config)
+            
+            let task = session.dataTaskWithRequest(urlRequest, completionHandler: { (data, response, error) in
+                // do stuff with response, data & error here
+                print("data: ", data)
+                
+            })
+            task.resume()
+        }
+        
     }
 
     /*
@@ -99,14 +125,16 @@ class RootTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        self.title = ""
     }
-    */
+
 
 }
