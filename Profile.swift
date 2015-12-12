@@ -14,7 +14,8 @@ class Profile: Object {
     dynamic var id = NSUUID().UUIDString
     dynamic var fullName = ""
     dynamic var email = ""
-    dynamic var apiKey = ""
+    dynamic var password = ""
+    dynamic var userHash = ""
     
     // Specify properties to ignore (Realm won't persist these)
     

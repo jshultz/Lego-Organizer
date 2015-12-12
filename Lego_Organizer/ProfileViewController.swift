@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import Alamofire
+
 
 
 class ProfileViewController: UIViewController {
@@ -16,40 +18,18 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var emailAddress: UITextField!
     
-    @IBOutlet weak var apiKey: UITextField!
-    
     @IBAction func btnSave(sender: AnyObject) {
-        if (self.profile != nil) {
-            let profile = Profile()
-            
-            profile.id = (self.profile!.id)
-            profile.fullName = self.fullName.text!
-            profile.email = self.emailAddress.text!
-            profile.apiKey = self.apiKey.text!
-            
-            try! realm.write {
-                self.realm.add(profile, update: true)
-                print("i wrote it")
-            }
-            
-        } else {
-            let profile = Profile()
-            
-            profile.fullName = self.fullName.text!
-            profile.email = self.emailAddress.text!
-            profile.apiKey = self.apiKey.text!
-            
-            try! realm.write {
-                self.realm.add(profile)
-            }
-        }
         
-//        performSegueWithIdentifier("showProfile", sender: self)
     }
+    
+    @IBOutlet weak var passwordField: UITextField!
+    
     
     let realm = try! Realm()
     var profile:Profile? = nil
     var notificationToken: NotificationToken?
+    
+    var userhash:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,18 +47,88 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func getUserHash(username:String, password:String, completionHandler: (String?) -> ()) -> () {
+        
+        Alamofire.request(.GET, "https://rebrickable.com/api/get_user_hash",
+            parameters: ["key": "9BUbjlV9IF", "email" : username, "pass": password, "format": "json"]
+            )
+            .responseString { response in
+                
+                completionHandler(response.result.value)
+                
+        }
+        
+
+    }
+    
     func setupUI() {
         self.title = "Profile"
         
         if let profile = realm.objects(Profile).first {
             fullName.text = profile.fullName
             emailAddress.text = profile.email
-            apiKey.text = profile.apiKey
+            passwordField.text = profile.password
             
             self.profile = profile
         }
         
     }
+    
+    @IBAction func saveProfile(sender: AnyObject) {
+        
+        if (self.profile != nil) {
+            let profile = Profile()
+            
+            profile.id = (self.profile!.id)
+            profile.fullName = self.fullName.text!
+            profile.email = self.emailAddress.text!
+            profile.password = self.passwordField.text!
+            
+            getUserHash(self.emailAddress.text!, password: self.passwordField.text!, completionHandler: { (accessKey) -> () in
+                if accessKey != nil {
+                    // Use accessKey however you'd like here
+                    
+                    profile.userHash = String(accessKey!)
+                    
+                    try! self.realm.write {
+                        self.realm.add(profile, update: true)
+                        print("i wrote it")
+                    }
+                    
+                } else {
+                    // Handle error / nil accessKey here
+                }
+            })
+
+            
+        } else {
+            let profile = Profile()
+            
+            profile.fullName = self.fullName.text!
+            profile.email = self.emailAddress.text!
+            profile.password = self.passwordField.text!
+            
+            getUserHash(self.emailAddress.text!, password: self.passwordField.text!, completionHandler: { (accessKey) -> () in
+                if accessKey != nil {
+                    // Use accessKey however you'd like here
+                    
+                    profile.userHash = String(accessKey!)
+                    
+                    try! self.realm.write {
+                        self.realm.add(profile, update: true)
+                        print("i wrote it")
+                    }
+                    
+                } else {
+                    // Handle error / nil accessKey here
+                }
+            })
+            
+        }
+        
+                performSegueWithIdentifier("showLego", sender: self)
+    }
+    
     
 
     /*

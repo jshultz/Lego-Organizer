@@ -14,6 +14,8 @@ class RootTableViewController: UITableViewController {
     
     let realm = try! Realm()
     
+    var profile:Profile? = nil
+    
     var apiKey:String = ""
     
     @IBOutlet var legoTable: UITableView!
@@ -54,13 +56,11 @@ class RootTableViewController: UITableViewController {
         self.title = "Lego Organizer"
         
         if let profile = realm.objects(Profile).first {
-            print("profile.apiKey", profile.apiKey)
-            self.apiKey = String(UTF8String: profile.apiKey)!
-            print("self.apiKey 2:", self.apiKey)
             self.legoTable.reloadData()
+            self.profile = profile
         }
         
-        if self.apiKey != "" {
+        if profile?.userHash != "" {
             let postEndpoint: String = "https://rebrickable.com/api/get_part?key=9BUbjlV9IF&part_id=30162&format=json"
             guard let url = NSURL(string: postEndpoint) else {
                 print("Error: cannot create URL")
