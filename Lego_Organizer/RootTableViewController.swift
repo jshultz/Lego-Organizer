@@ -46,12 +46,12 @@ class RootTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return datas.count
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return datas.count
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -77,6 +77,7 @@ class RootTableViewController: UITableViewController {
                 case .Success:
                     if response.result.value != nil {
                         var jsonObj = JSON(response.result.value!)
+//                        print("jsonObj: ", jsonObj)
                         
                         if let data:JSON = JSON(jsonObj[0]["sets"].arrayValue) {
                             self.datas = data
@@ -100,16 +101,25 @@ class RootTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
+        let imageView = cell.viewWithTag(30) as! UIImageView
+        
+        let subTitle = cell.viewWithTag(20) as! UILabel
+        
         let object = datas[indexPath.row]
         
         if let userName = object["set_id"].string {
-            print("userName", userName)
+            let img_url = String(UTF8String: object["img_sm"].string!)!
+//            print("userName", userName)
             cell.textLabel?.text = userName
+            
+            if let url = NSURL(string: "\(img_url)") {
+                if let data = NSData(contentsOfURL: url) {
+                    imageView.image = UIImage(data: data)
+                }        
+            }
+            subTitle.text = object["descr"].string
         }
-        
-        
         print("object: ", object)
-//        cell.detailTextLabel?.text = object.date.description
         
         return cell
     }
