@@ -21,6 +21,8 @@ class RootTableViewController: UITableViewController {
     
     var userSets:NSArray = []
     
+    var activeSet = -1
+    
 //    var datas: [JSON] = []
     var datas: JSON = []
     
@@ -159,6 +161,12 @@ class RootTableViewController: UITableViewController {
         return true
     }
     */
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        print("indexPath: ", indexPath)
+        activeSet = indexPath.row
+        return indexPath
+    }
 
 
     // MARK: - Navigation
@@ -167,6 +175,19 @@ class RootTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "newPlace" {
+            
+        } else if segue.identifier == "showLegoSet" {
+            
+            let legoSetController:LegoSetViewController = segue.destinationViewController as! LegoSetViewController
+            
+            print("activeSet: ", self.datas[activeSet])
+            
+            let setId = "test"
+            
+            legoSetController.setId = setId
+        }
         
         self.title = ""
     }
