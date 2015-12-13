@@ -16,6 +16,7 @@ class SetsPartsListTableViewController: UITableViewController {
     var setId:JSON = nil
     var datas: JSON = []
     let realm = try! Realm()
+    var activePart = -1
     var profile:Profile? = nil
     
     @IBOutlet var legoTable: UITableView!
@@ -79,12 +80,17 @@ class SetsPartsListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+//        print("indexPath: ", indexPath)
+        activePart = indexPath.row
+        return indexPath
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return datas.count
     }
-
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -101,14 +107,14 @@ class SetsPartsListTableViewController: UITableViewController {
         if let userName = object["part_id"].string {
             let img_url = String(UTF8String: object["part_img_url"].string!)!
 //            print("userName", userName)
-            cell.textLabel?.text = userName + " " + String(UTF8String: object["part_name"].string!)!
+            cell.textLabel?.text = userName + " " + object["part_name"].string!
             
             if let url = NSURL(string: "\(img_url)") {
                 if let data = NSData(contentsOfURL: url) {
                     imageView.image = UIImage(data: data)
                 }
             }
-            subTitle.text = object["color_name"].string
+            subTitle.text = "Color: " + object["color_name"].string! + ", Quantity: " + object["qty"].string!
         }
 //        print("object: ", object)
         
@@ -151,14 +157,29 @@ class SetsPartsListTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "newPlace" {
+            
+        } else if segue.identifier == "showPartDetail" {
+            
+            let partDetailController:PartDetailViewController = segue.destinationViewController as! PartDetailViewController
+            
+            //            print("activeSet: ", self.datas[activeSet])
+            
+            let setId = self.datas[activePart]
+            
+            partDetailController.partId = setId
+        }
+        
+        
     }
-    */
+
 
 }

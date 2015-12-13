@@ -14,6 +14,7 @@
 		DE7722D11C1DC75D003D443F /* default-placeholder-300x300.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7722D01C1DC75D003D443F /* default-placeholder-300x300.png */; };
 		DE7722D31C1DE6D9003D443F /* LegoSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7722D21C1DE6D9003D443F /* LegoSetViewController.swift */; };
 		DE7722D51C1E15F7003D443F /* SetsPartsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7722D41C1E15F7003D443F /* SetsPartsListTableViewController.swift */; };
+		DE7722D71C1E2DA0003D443F /* PartDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7722D61C1E2DA0003D443F /* PartDetailViewController.swift */; };
 		DE908AA01C15024600DE3F13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE908A9F1C15024600DE3F13 /* AppDelegate.swift */; };
 		DE908AA51C15024600DE3F13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE908AA31C15024600DE3F13 /* Main.storyboard */; };
 		DE908AA71C15024600DE3F13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE908AA61C15024600DE3F13 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		DE7722D01C1DC75D003D443F /* default-placeholder-300x300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-placeholder-300x300.png"; sourceTree = "<group>"; };
 		DE7722D21C1DE6D9003D443F /* LegoSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegoSetViewController.swift; sourceTree = "<group>"; };
 		DE7722D41C1E15F7003D443F /* SetsPartsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetsPartsListTableViewController.swift; sourceTree = "<group>"; };
+		DE7722D61C1E2DA0003D443F /* PartDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartDetailViewController.swift; sourceTree = "<group>"; };
 		DE908A9C1C15024600DE3F13 /* Lego_Organizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lego_Organizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE908A9F1C15024600DE3F13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE908AA41C15024600DE3F13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				DE2586D71C154250001957DB /* Models */,
 				DE908A9F1C15024600DE3F13 /* AppDelegate.swift */,
 				DE908AA31C15024600DE3F13 /* Main.storyboard */,
+				DE7722D61C1E2DA0003D443F /* PartDetailViewController.swift */,
 				DE7722D41C1E15F7003D443F /* SetsPartsListTableViewController.swift */,
 				DE7722D21C1DE6D9003D443F /* LegoSetViewController.swift */,
 				DE4954061C1537D50009775B /* ProfileViewController.swift */,
@@ -247,6 +250,7 @@
 				DE7722D31C1DE6D9003D443F /* LegoSetViewController.swift in Sources */,
 				DE4954071C1537D50009775B /* ProfileViewController.swift in Sources */,
 				DE2586D91C1542AB001957DB /* Profile.swift in Sources */,
+				DE7722D71C1E2DA0003D443F /* PartDetailViewController.swift in Sources */,
 				DE908AA01C15024600DE3F13 /* AppDelegate.swift in Sources */,
 				DE4954051C152C050009775B /* RootTableViewController.swift in Sources */,
 				DE7722D51C1E15F7003D443F /* SetsPartsListTableViewController.swift in Sources */,
