@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import SwiftyJSON
+import Alamofire
 
 class RootTableViewController: UITableViewController {
     
@@ -17,6 +18,11 @@ class RootTableViewController: UITableViewController {
     var profile:Profile? = nil
     
     var apiKey:String = ""
+    
+    var userSets:NSArray = []
+    
+//    var datas: [JSON] = []
+    var datas: JSON = []
     
     @IBOutlet var legoTable: UITableView!
     
@@ -40,69 +46,74 @@ class RootTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return datas.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
     
     override func viewWillAppear(animated: Bool) {
         setupUI()
     }
     
+    func getUserSets(userHash:String, completionHandler: (JSON?) -> ()) -> () {
+        
+    }
+    
     func setupUI() {
         self.title = "Lego Organizer"
         
         if let profile = realm.objects(Profile).first {
-            self.legoTable.reloadData()
             self.profile = profile
         }
         
         if profile?.userHash != "" {
-            let postEndpoint: String = "https://rebrickable.com/api/get_part?key=9BUbjlV9IF&part_id=30162&format=json"
-            guard let url = NSURL(string: postEndpoint) else {
-                print("Error: cannot create URL")
-                return
-            }
-            let urlRequest = NSURLRequest(URL: url)
             
-            let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-            let session = NSURLSession(configuration: config)
             
-            let task = session.dataTaskWithRequest(urlRequest, completionHandler: { (data, response, error) in
-                // do stuff with response, data & error here
-                
-                if error != nil {
-                    print("error: ", error)
-                } else {
-                    if let data = data {
-                        do {
-                            let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                            print("jsonResult: ", jsonDict)
-
-                        } catch {
-                            print("something went wrong")
+            Alamofire.request(.GET, "https://rebrickable.com/api/get_user_sets", parameters: ["key": "9BUbjlV9IF", "hash" : (profile?.userHash)!, "format": "json"]).validate().responseJSON { response in
+                switch response.result {
+                case .Success:
+                    if response.result.value != nil {
+                        var jsonObj = JSON(response.result.value!)
+                        
+                        if let data:JSON = JSON(jsonObj[0]["sets"].arrayValue) {
+                            self.datas = data
+//                            print("jsonObj: ", jsonObj)
+                            print("datas: ", self.datas)
+//                            print("data: ", response.result.value)
+                            self.legoTable.reloadData()
                         }
                     }
+                    
+                case .Failure(let error):
+                    print(error)
                 }
-                
-                })
-            task.resume()
+            }
+            
         }
         
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        let object = datas[indexPath.row]
+        
+        if let userName = object["set_id"].string {
+            print("userName", userName)
+            cell.textLabel?.text = userName
+        }
+        
+        
+        print("object: ", object)
+//        cell.detailTextLabel?.text = object.date.description
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -112,7 +123,7 @@ class RootTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -122,7 +133,7 @@ class RootTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.
