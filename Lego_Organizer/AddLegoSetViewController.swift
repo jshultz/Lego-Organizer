@@ -26,13 +26,14 @@ class AddLegoSetViewController: UIViewController {
     }
     
     func createSet(username:String, password:String, completionHandler: (String?) -> ()) -> () {
-        Alamofire.request(.POST, "https://rebrickable.com/api/get_user_hash",
+        Alamofire.request(.POST, "https://rebrickable.com/api/set_user_set",
             parameters: [
                 "key": "9BUbjlV9IF",
                 "hash" : "8d6678c55a5a93393b19fd2f38e44ed1",
-                "desc": "some stuff here",
                 "format": "json",
-                "type": "1"
+                "setlist_id": "1",
+                "qty": "1",
+                "set": "75108-1"
             ]
             )
             .responseString { response in
