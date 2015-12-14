@@ -19,6 +19,7 @@
 		DE908AA51C15024600DE3F13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE908AA31C15024600DE3F13 /* Main.storyboard */; };
 		DE908AA71C15024600DE3F13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE908AA61C15024600DE3F13 /* Assets.xcassets */; };
 		DE908AAA1C15024600DE3F13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE908AA81C15024600DE3F13 /* LaunchScreen.storyboard */; };
+		DEFBA8F71C1E5CD900CD4FB3 /* AddLegoSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFBA8F61C1E5CD900CD4FB3 /* AddLegoSetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		DE908AA61C15024600DE3F13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE908AA91C15024600DE3F13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE908AAB1C15024600DE3F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEFBA8F61C1E5CD900CD4FB3 /* AddLegoSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLegoSetViewController.swift; sourceTree = "<group>"; };
 		FE0DCB44D9B102669C5DACC3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 				DE2586D71C154250001957DB /* Models */,
 				DE908A9F1C15024600DE3F13 /* AppDelegate.swift */,
 				DE908AA31C15024600DE3F13 /* Main.storyboard */,
+				DEFBA8F61C1E5CD900CD4FB3 /* AddLegoSetViewController.swift */,
 				DE7722D61C1E2DA0003D443F /* PartDetailViewController.swift */,
 				DE7722D41C1E15F7003D443F /* SetsPartsListTableViewController.swift */,
 				DE7722D21C1DE6D9003D443F /* LegoSetViewController.swift */,
@@ -251,6 +254,7 @@
 				DE4954071C1537D50009775B /* ProfileViewController.swift in Sources */,
 				DE2586D91C1542AB001957DB /* Profile.swift in Sources */,
 				DE7722D71C1E2DA0003D443F /* PartDetailViewController.swift in Sources */,
+				DEFBA8F71C1E5CD900CD4FB3 /* AddLegoSetViewController.swift in Sources */,
 				DE908AA01C15024600DE3F13 /* AppDelegate.swift in Sources */,
 				DE4954051C152C050009775B /* RootTableViewController.swift in Sources */,
 				DE7722D51C1E15F7003D443F /* SetsPartsListTableViewController.swift in Sources */,
