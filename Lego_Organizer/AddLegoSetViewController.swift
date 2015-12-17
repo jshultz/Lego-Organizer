@@ -12,7 +12,8 @@ import Alamofire
 
 class AddLegoSetViewController: UIViewController {
     
-    @IBOutlet weak var setDescription: UITextField!
+    @IBOutlet weak var setId: UITextField!
+    @IBOutlet weak var setQuantity: UITextField!
     
     @IBAction func saveSet(sender: AnyObject) {
         
@@ -32,8 +33,8 @@ class AddLegoSetViewController: UIViewController {
                 "hash" : "8d6678c55a5a93393b19fd2f38e44ed1",
                 "format": "json",
                 "setlist_id": "1",
-                "qty": "1",
-                "set": "75108-1"
+                "qty": setQuantity.text!,
+                "set": setId.text!
             ]
             )
             .responseString { response in

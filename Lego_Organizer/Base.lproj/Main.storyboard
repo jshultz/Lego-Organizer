@@ -18,13 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Set Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-YG-R7R">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1N-rT-g3y">
+                                <rect key="frame" x="20" y="110" width="363" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Set Id (ex: 75108-1)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-YG-R7R">
                                 <rect key="frame" x="20" y="72" width="363" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="A1N-rT-g3y" secondAttribute="trailing" constant="197" id="4dW-sZ-5Z1"/>
+                            <constraint firstItem="A1N-rT-g3y" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" id="7ll-4y-976"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dyo-YG-R7R" secondAttribute="trailing" constant="197" id="Gfp-gT-VWf"/>
+                            <constraint firstItem="A1N-rT-g3y" firstAttribute="top" secondItem="Dyo-YG-R7R" secondAttribute="bottom" constant="8" id="i1e-K0-Pc0"/>
+                            <constraint firstItem="Dyo-YG-R7R" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" id="ngt-TW-N88"/>
+                            <constraint firstItem="Dyo-YG-R7R" firstAttribute="top" secondItem="Kv1-py-yaB" secondAttribute="bottom" constant="8" id="tfl-rq-OZW"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Set" id="WEu-J9-Ph8">
@@ -37,7 +50,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
-                        <outlet property="setDescription" destination="Dyo-YG-R7R" id="BHT-Wa-y9W"/>
+                        <outlet property="setId" destination="Dyo-YG-R7R" id="ziT-N5-5Ms"/>
+                        <outlet property="setQuantity" destination="A1N-rT-g3y" id="Sfh-nd-OCP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fi4-JE-Ei3" userLabel="First Responder" sceneMemberID="firstResponder"/>
