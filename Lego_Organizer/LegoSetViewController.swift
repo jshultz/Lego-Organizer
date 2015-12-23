@@ -21,8 +21,7 @@ class LegoSetViewController: UIViewController {
     @IBOutlet weak var setDescriptionLabel: UILabel!
     
     @IBOutlet weak var setImage: UIImageView!
-    
-    
+        
     var setId:JSON = nil
 
     override func viewDidLoad() {

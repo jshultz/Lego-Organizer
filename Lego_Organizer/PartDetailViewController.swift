@@ -26,6 +26,8 @@ class PartDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("partId: ", partId)
 
         // Do any additional setup after loading the view.
         
