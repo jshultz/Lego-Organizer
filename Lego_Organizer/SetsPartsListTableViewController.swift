@@ -37,13 +37,9 @@ class SetsPartsListTableViewController: UITableViewController {
                 case .Success:
                     if response.result.value != nil {
                         var jsonObj = JSON(response.result.value!)
-//                        print("jsonObj: ", jsonObj)
                         
                         if let data:JSON = JSON(jsonObj[0]["parts"].arrayValue) {
                             self.datas = data
-//                            print("jsonObj: ", jsonObj)
-//                            print("datas: ", self.datas)
-//                            print("data: ", response.result.value)
                             self.legoTable.reloadData()
                         }
                     }

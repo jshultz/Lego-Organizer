@@ -19,42 +19,63 @@ class PartDetailViewController: UIViewController {
     
     @IBOutlet weak var partNameLabel: UILabel!
     
-    @IBOutlet weak var partDescriptionLabel: UILabel!
-    
     @IBOutlet weak var partImage: UIImageView!
     
+    @IBOutlet weak var partDescription: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+        
         print("partId: ", partId)
 
         // Do any additional setup after loading the view.
-        
-        self.partIdLabel.text = String(UTF8String: self.partId["part_id"].string!)!
-        
-//        let pieces:String = String(UTF8String: self.partId["pieces"].string!)!
-        
-//        let year:String = String(UTF8String: self.partId["year"].string!)!
-        
-        self.partNameLabel.text = String(UTF8String: self.partId["part_name"].string!)!
-        
-        let imageView = partImage as UIImageView
-        
-        let img_url = String(UTF8String: self.partId["part_img_url"].string!)!
-        
-        if let url = NSURL(string: "\(img_url)") {
-            if let data = NSData(contentsOfURL: url) {
-                imageView.image = UIImage(data: data)
-            }
-        }
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupUI() {
+        
+        if self.partId != nil {
+            Alamofire.request(.GET, "https://rebrickable.com/api/get_part", parameters: ["key": "9BUbjlV9IF", "part_id" : String(UTF8String: self.partId["part_id"].string!)!, "format": "json"]).validate().responseJSON { response in
+                switch response.result {
+                case .Success:
+                    if response.result.value != nil {
+                        let jsonObj = JSON(response.result.value!)
+                        
+                        print("jsonObj: ", jsonObj)
+                        
+                        self.partIdLabel.text = String(UTF8String: self.partId["part_id"].string!)!
+                        
+                        self.partNameLabel.text = String(UTF8String: self.partId["part_name"].string!)!
+                        
+                        let imageView = self.partImage as UIImageView
+                        
+                        let img_url = String(UTF8String: self.partId["part_img_url"].string!)!
+                        
+                         if let url = NSURL(string: "\(img_url)") {
+                         if let data = NSData(contentsOfURL: url) {
+                                        imageView.image = UIImage(data: data)
+                                }
+                         }
+                        
+                        let year1:String = jsonObj["year1"].string!
+                        let year2:String = jsonObj["year2"].string!
+                        
+                        self.partDescription.text = "Originally made in \(year1) and continued to be made through \(year2)."
+                        
+                    }
+                    
+                case .Failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
     }
     
 
