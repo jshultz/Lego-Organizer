@@ -28,8 +28,6 @@ class PartDetailViewController: UIViewController {
         
         setupUI()
         
-        print("partId: ", partId)
-
         // Do any additional setup after loading the view.
     }
 
@@ -46,9 +44,7 @@ class PartDetailViewController: UIViewController {
                 case .Success:
                     if response.result.value != nil {
                         let jsonObj = JSON(response.result.value!)
-                        
-                        print("jsonObj: ", jsonObj)
-                        
+                                                
                         self.partIdLabel.text = String(UTF8String: self.partId["part_id"].string!)!
                         
                         self.partNameLabel.text = String(UTF8String: self.partId["part_name"].string!)!
@@ -79,14 +75,29 @@ class PartDetailViewController: UIViewController {
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "newPlace" {
+            
+        } else if segue.identifier == "showPartVariants" {
+            
+            let partVariantController:PartVariantsTableViewController = segue.destinationViewController as! PartVariantsTableViewController
+            
+//            print("activeSet: ", self.datas[activeSet])
+            
+            let partId = self.partId
+            
+            partVariantController.partId = partId
+        }
+        
+        
     }
-    */
+
 
 }

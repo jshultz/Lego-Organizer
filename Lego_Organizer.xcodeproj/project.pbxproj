@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3ACC6B10394DCD75B3021376 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE0DCB44D9B102669C5DACC3 /* Pods.framework */; };
 		DE2586D91C1542AB001957DB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2586D81C1542AB001957DB /* Profile.swift */; };
+		DE2AD8751C2B22DC00F969D3 /* PartVariantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AD8741C2B22DC00F969D3 /* PartVariantsTableViewController.swift */; };
 		DE4954051C152C050009775B /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4954041C152C050009775B /* RootTableViewController.swift */; };
 		DE4954071C1537D50009775B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4954061C1537D50009775B /* ProfileViewController.swift */; };
 		DE7722D11C1DC75D003D443F /* default-placeholder-300x300.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7722D01C1DC75D003D443F /* default-placeholder-300x300.png */; };
@@ -26,6 +27,7 @@
 		3EA6890070EF5BA1F462065E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9253A31D0FD47EEBC55B7755 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DE2586D81C1542AB001957DB /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		DE2AD8741C2B22DC00F969D3 /* PartVariantsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartVariantsTableViewController.swift; sourceTree = "<group>"; };
 		DE4954041C152C050009775B /* RootTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
 		DE4954061C1537D50009775B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DE7722D01C1DC75D003D443F /* default-placeholder-300x300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-placeholder-300x300.png"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				DE908AA81C15024600DE3F13 /* LaunchScreen.storyboard */,
 				DE908AAB1C15024600DE3F13 /* Info.plist */,
 				DE4954041C152C050009775B /* RootTableViewController.swift */,
+				DE2AD8741C2B22DC00F969D3 /* PartVariantsTableViewController.swift */,
 			);
 			path = Lego_Organizer;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				DE7722D71C1E2DA0003D443F /* PartDetailViewController.swift in Sources */,
 				DEFBA8F71C1E5CD900CD4FB3 /* AddLegoSetViewController.swift in Sources */,
 				DE908AA01C15024600DE3F13 /* AppDelegate.swift in Sources */,
+				DE2AD8751C2B22DC00F969D3 /* PartVariantsTableViewController.swift in Sources */,
 				DE4954051C152C050009775B /* RootTableViewController.swift in Sources */,
 				DE7722D51C1E15F7003D443F /* SetsPartsListTableViewController.swift in Sources */,
 			);

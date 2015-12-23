@@ -14,6 +14,8 @@ class AddLegoSetViewController: UIViewController {
     
     @IBOutlet weak var setId: UITextField!
     @IBOutlet weak var setQuantity: UITextField!
+    @IBOutlet weak var wishList: UISwitch!
+    
     
     @IBAction func saveSet(sender: AnyObject) {
         
