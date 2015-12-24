@@ -13,6 +13,16 @@ import Alamofire
 
 class LegoSetViewController: UIViewController {
     
+    let realm = try! Realm()
+    
+    var profile:Profile? = nil
+    
+    var apiKey:String = ""
+    
+    var userSets:NSArray = []
+    
+    var activeSet = -1
+    
 
     @IBOutlet weak var setNumberLabel: UILabel!
     
@@ -29,26 +39,6 @@ class LegoSetViewController: UIViewController {
         
 //        print("setId: ", self.setId)
         
-        self.setNumberLabel.text = String(UTF8String: self.setId["set_id"].string!)!
-        
-        self.setNameLabel.text = String(UTF8String: self.setId["descr"].string!)!
-        
-        let pieces:String = String(UTF8String: self.setId["pieces"].string!)!
-        
-        let year:String = String(UTF8String: self.setId["year"].string!)!
-        
-        self.setDescriptionLabel.text = "Set consists of \(pieces) pieces and was first produced in \(year)."
-        
-        let imageView = setImage as UIImageView
-        
-        let img_url = String(UTF8String: self.setId["img_sm"].string!)!
-        
-        if let url = NSURL(string: "\(img_url)") {
-            if let data = NSData(contentsOfURL: url) {
-                imageView.image = UIImage(data: data)
-            }
-        }
-        
         // Do any additional setup after loading the view.
     }
 
@@ -57,6 +47,64 @@ class LegoSetViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        setupUI()
+    }
+    
+    func setupUI() {
+        
+        if let profile = realm.objects(Profile).first {
+            self.profile = profile
+        }
+        
+        if profile?.userHash != "" {
+            
+            
+            Alamofire.request(.GET, "https://rebrickable.com/api/get_set_match", parameters: [
+                "key": "9BUbjlV9IF",
+                "hash" : (profile?.userHash)!,
+                "set" : self.setId["set_id"].string!,
+                "format": "json"]).validate().responseJSON { response in
+                switch response.result {
+                case .Success:
+                    if response.result.value != nil {
+                        var jsonObj = JSON(response.result.value!)
+                        
+                        if let data:JSON = jsonObj[0] {
+                            let total_parts:String = String(data["total_parts"])
+                            let total_missing:String = String(data["total_missing"])
+                            
+                            self.setNumberLabel.text = String(UTF8String: self.setId["set_id"].string!)!
+                            
+                            self.setNameLabel.text = String(UTF8String: self.setId["descr"].string!)!
+                            
+                            let pieces:String = String(UTF8String: self.setId["pieces"].string!)!
+                            
+                            let year:String = String(UTF8String: self.setId["year"].string!)!
+                            
+                            self.setDescriptionLabel.text = "Set consists of \(pieces) pieces and was first produced in \(year). There are \(total_parts) parts in this set and you have \(total_missing) missing."
+                            
+                            let imageView = self.setImage as UIImageView
+                            
+                            let img_url = String(UTF8String: self.setId["img_sm"].string!)!
+                            
+                            if let url = NSURL(string: "\(img_url)") {
+                                if let data = NSData(contentsOfURL: url) {
+                                    imageView.image = UIImage(data: data)
+                                }
+                            }
+                            
+                            
+                        }
+                    }
+                    
+                case .Failure(let error):
+                    print(error)
+                }
+            }
+            
+        }
+    }
 
 
     // MARK: - Navigation

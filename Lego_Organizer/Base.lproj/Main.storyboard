@@ -18,69 +18,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1N-rT-g3y">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1N-rT-g3y">
                                 <rect key="frame" x="20" y="110" width="363" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="363" id="pLS-7w-AGi"/>
-                                    <constraint firstAttribute="height" constant="30" id="xnh-XV-N4e"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Set Id (ex: 75108-1)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-YG-R7R">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Set Id (ex: 75108-1)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-YG-R7R">
                                 <rect key="frame" x="20" y="72" width="363" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="363" id="bRW-0O-1k4"/>
-                                    <constraint firstAttribute="height" constant="30" id="qC8-k1-vCm"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="363" id="rge-QT-ows"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BA8-B5-SSQ">
-                                <rect key="frame" x="20" y="148" width="51" height="31"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set List" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7X2-2C-hJi">
+                                <rect key="frame" x="20" y="148" width="363" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="setListEdit:" destination="SiM-Sq-cSf" eventType="editingDidEnd" id="ebk-yQ-LF2"/>
+                                </connections>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffo-YD-In0">
+                                <rect key="frame" x="0.0" y="332" width="600" height="216"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="49" id="QMH-2q-obt"/>
-                                    <constraint firstAttribute="height" constant="31" id="qfj-J5-Yry"/>
+                                    <constraint firstAttribute="height" constant="216" id="5iU-OI-mVf"/>
+                                    <constraint firstAttribute="width" constant="600" id="669-l2-TAv"/>
                                 </constraints>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wishlist sets individual parts do not appear in your inventory." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpU-FY-3Ub">
-                                <rect key="frame" x="74" y="182" width="463" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="463" id="clP-yf-pnP"/>
-                                    <constraint firstAttribute="height" constant="21" id="rmy-Qa-0lF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is this a wishlist set?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGm-2m-VKP">
-                                <rect key="frame" x="77" y="153" width="165" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="0Xq-RR-gMc"/>
-                                    <constraint firstAttribute="width" constant="165" id="ZNl-Hx-rYc"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="165" id="l1m-Zy-qPI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BA8-B5-SSQ" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" id="0gE-t1-YxY"/>
-                            <constraint firstItem="Dyo-YG-R7R" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" id="0o3-l2-Zdd"/>
-                            <constraint firstItem="JpU-FY-3Ub" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" constant="54" id="LNd-g3-VFt"/>
-                            <constraint firstItem="NGm-2m-VKP" firstAttribute="leading" secondItem="BA8-B5-SSQ" secondAttribute="trailing" constant="8" id="Mo1-9c-Mm7"/>
-                            <constraint firstItem="BA8-B5-SSQ" firstAttribute="top" secondItem="A1N-rT-g3y" secondAttribute="bottom" constant="8" id="Yi3-Ea-dPb"/>
-                            <constraint firstItem="A1N-rT-g3y" firstAttribute="top" secondItem="Dyo-YG-R7R" secondAttribute="bottom" constant="8" id="ZQm-Rh-f3c"/>
-                            <constraint firstItem="A1N-rT-g3y" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" id="bWz-Fq-dtx"/>
-                            <constraint firstItem="Dyo-YG-R7R" firstAttribute="top" secondItem="Kv1-py-yaB" secondAttribute="bottom" constant="8" id="hak-fS-9jK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="A1N-rT-g3y" secondAttribute="trailing" constant="197" id="m1c-Ig-ww7"/>
-                            <constraint firstItem="NGm-2m-VKP" firstAttribute="top" secondItem="A1N-rT-g3y" secondAttribute="bottom" constant="13" id="oSS-fz-9Zb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Dyo-YG-R7R" secondAttribute="trailing" constant="197" id="rfA-kY-7hg"/>
-                            <constraint firstItem="JpU-FY-3Ub" firstAttribute="top" secondItem="NGm-2m-VKP" secondAttribute="bottom" constant="8" id="xGg-4p-4mp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JpU-FY-3Ub" secondAttribute="trailing" constant="43" id="xvY-4l-LcW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ffo-YD-In0" secondAttribute="trailing" constant="-20" id="lWW-ef-5ZC"/>
+                            <constraint firstItem="Uwp-fx-5IX" firstAttribute="top" secondItem="ffo-YD-In0" secondAttribute="bottom" constant="8" id="o4r-Lr-04C"/>
+                            <constraint firstItem="ffo-YD-In0" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" constant="-20" id="tcK-Kd-IZB"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -95,8 +63,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="setId" destination="Dyo-YG-R7R" id="ziT-N5-5Ms"/>
+                        <outlet property="setList" destination="7X2-2C-hJi" id="00w-a2-Zad"/>
+                        <outlet property="setListPicker" destination="ffo-YD-In0" id="7Y1-w6-kaZ"/>
                         <outlet property="setQuantity" destination="A1N-rT-g3y" id="Sfh-nd-OCP"/>
-                        <outlet property="wishList" destination="BA8-B5-SSQ" id="yze-c3-dY6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fi4-JE-Ei3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,7 +183,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Law-5I-Cfb">
-                                <rect key="frame" x="20" y="432" width="113" height="30"/>
+                                <rect key="frame" x="20" y="454" width="113" height="30"/>
                                 <state key="normal" title="Get Set Part List"/>
                                 <connections>
                                     <segue destination="9fc-LV-DaH" kind="show" identifier="showSetsPartsList" id="ZXR-6U-Xat"/>
@@ -234,8 +203,8 @@
                             <constraint firstItem="IsU-MD-ukD" firstAttribute="leading" secondItem="iHq-BA-g36" secondAttribute="leading" id="Ysz-30-gle"/>
                             <constraint firstItem="omo-FN-Bvo" firstAttribute="baseline" secondItem="IsU-MD-ukD" secondAttribute="baseline" id="Yzk-WI-GF6"/>
                             <constraint firstItem="Qit-hF-Tz6" firstAttribute="top" secondItem="FSz-8D-ePm" secondAttribute="bottom" constant="8" symbolic="YES" id="fzg-Tg-yuh"/>
-                            <constraint firstItem="i0j-Rc-4kS" firstAttribute="top" secondItem="Law-5I-Cfb" secondAttribute="bottom" constant="30" id="npx-s4-3Y4"/>
-                            <constraint firstItem="Law-5I-Cfb" firstAttribute="top" secondItem="iHq-BA-g36" secondAttribute="bottom" constant="53" id="peb-Oj-dCz"/>
+                            <constraint firstItem="i0j-Rc-4kS" firstAttribute="top" secondItem="Law-5I-Cfb" secondAttribute="bottom" constant="8" id="npx-s4-3Y4"/>
+                            <constraint firstItem="Law-5I-Cfb" firstAttribute="top" secondItem="iHq-BA-g36" secondAttribute="bottom" constant="75" id="peb-Oj-dCz"/>
                             <constraint firstItem="iHq-BA-g36" firstAttribute="leading" secondItem="Law-5I-Cfb" secondAttribute="leading" id="tso-xr-6ym"/>
                             <constraint firstItem="omo-FN-Bvo" firstAttribute="trailing" secondItem="iHq-BA-g36" secondAttribute="trailing" id="x2g-uN-zvC"/>
                         </constraints>
