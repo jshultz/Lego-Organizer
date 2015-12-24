@@ -21,6 +21,8 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     var pickerData = [Int: String]()
     
+    var listID:Int = 1
+    
     @IBOutlet weak var setListPicker: UIPickerView!
     
     
@@ -32,21 +34,46 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func saveSet(sender: AnyObject) {
         
-        createSet("test set", password: "password") { (accessKey) -> () in
-            if accessKey != nil {
-                print("accessKey: ", accessKey)
+        createSet("test set", password: "password") { (responeValue) -> () in
+            
+            if responeValue != nil {
+                let temp:String = String(UTF8String: responeValue!)!
+                switch String(temp) {
+                case "NOSET":
+                    self.showAlert("Error", errorMessage: "No set exists with that id. Should be in ####-# format.")
+                     print("NOSET: ", String(temp))
+                case "SUCCESS":
+                    self.performSegueWithIdentifier("showLego", sender: self)
+                default:
+                    print("default: ", String(temp))
+                }
+                
             }
         }
         
     }
     
+    func showAlert(errorTitle:String, errorMessage:String) {
+        print("in the alert")
+        let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .Alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     func createSet(username:String, password:String, completionHandler: (String?) -> ()) -> () {
+        
+        if let profile = realm.objects(Profile).first {
+            self.profile = profile
+        }
+        
         Alamofire.request(.POST, "https://rebrickable.com/api/set_user_set",
             parameters: [
                 "key": "9BUbjlV9IF",
-                "hash" : "8d6678c55a5a93393b19fd2f38e44ed1",
+                "hash" : (profile?.userHash)!,
                 "format": "json",
-                "setlist_id": "1",
+                "setlist_id": listID,
                 "qty": setQuantity.text!,
                 "set": setId.text!
             ]
@@ -84,6 +111,9 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
                                 }
                                 self.setListPicker.delegate = self
                                 self.setListPicker.dataSource = self
+                                self.setListPicker.selectRow(1, inComponent: 0, animated: true)
+                                print("self.pickerData[1]:", self.pickerData[1])
+                                self.setList.text = String(UTF8String: self.pickerData[1]!)!
                             }
                         }
                         
@@ -136,8 +166,9 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
         self.setList.text = self.pickerData[row]
-        print("self.pickerData: ", self.pickerData)
-        print("row: ", String(self.pickerData[row]!) )
+//        print("self.pickerData: ", self.pickerData)
+        self.listID = Int(row)
+//        print("row: ", row )
     }
 
     /*

@@ -66,6 +66,7 @@
                         <outlet property="setList" destination="7X2-2C-hJi" id="00w-a2-Zad"/>
                         <outlet property="setListPicker" destination="ffo-YD-In0" id="7Y1-w6-kaZ"/>
                         <outlet property="setQuantity" destination="A1N-rT-g3y" id="Sfh-nd-OCP"/>
+                        <segue destination="eNQ-ye-QbU" kind="show" identifier="showLego" id="53u-Hr-fTf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fi4-JE-Ei3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,14 +382,14 @@
                                             <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="20" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vEj-4d-BxX">
                                             <rect key="frame" x="15" y="25.5" width="30.5" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -497,6 +498,6 @@
         <image name="default-placeholder-300x300.png" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="niN-nJ-Xxb"/>
+        <segue reference="53u-Hr-fTf"/>
     </inferredMetricsTieBreakers>
 </document>
