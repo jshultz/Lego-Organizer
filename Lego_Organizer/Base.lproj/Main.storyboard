@@ -51,7 +51,13 @@
                             <constraint firstItem="ffo-YD-In0" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" constant="-20" id="tcK-Kd-IZB"/>
                         </constraints>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Profile" id="ZIn-td-EbN">
+                            <connections>
+                                <segue destination="VgH-OT-pqx" kind="show" id="lDH-lg-vLF"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Add Set" id="WEu-J9-Ph8">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="GjV-RM-43r">
                             <connections>
@@ -153,10 +159,10 @@
                         <viewControllerLayoutGuide type="bottom" id="i0j-Rc-4kS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LUi-gb-BZI">
-                        <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsU-MD-ukD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsU-MD-ukD">
                                 <rect key="frame" x="20" y="263" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="yin-uJ-cdS"/>
@@ -165,16 +171,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omo-FN-Bvo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omo-FN-Bvo">
                                 <rect key="frame" x="70" y="263" width="510" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qit-hF-Tz6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qit-hF-Tz6">
                                 <rect key="frame" x="20" y="8" width="560" height="247"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHq-BA-g36">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHq-BA-g36">
                                 <rect key="frame" x="20" y="292" width="560" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="87" id="4E6-hQ-OHV"/>
@@ -183,7 +189,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Law-5I-Cfb">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Law-5I-Cfb">
                                 <rect key="frame" x="20" y="454" width="113" height="30"/>
                                 <state key="normal" title="Get Set Part List"/>
                                 <connections>
@@ -210,7 +216,15 @@
                             <constraint firstItem="omo-FN-Bvo" firstAttribute="trailing" secondItem="iHq-BA-g36" secondAttribute="trailing" id="x2g-uN-zvC"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <toolbarItems>
+                        <barButtonItem title="Profile" id="4bf-NB-O0u">
+                            <connections>
+                                <segue destination="VgH-OT-pqx" kind="show" id="CF9-wV-Jj4"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="o9z-OU-Q3Z"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="setDescriptionLabel" destination="iHq-BA-g36" id="fyh-Sc-nqr"/>
@@ -228,12 +242,12 @@
             <objects>
                 <tableViewController storyboardIdentifier="Parts In Sets" title="Parts in Sets Table" id="9fc-LV-DaH" customClass="SetsPartsListTableViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jEO-Vi-gqN">
-                        <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="cGS-t8-4Qi" detailTextLabel="dsG-4u-Kg3" imageView="kzF-1t-aUW" style="IBUITableViewCellStyleSubtitle" id="Jwh-H6-pPG">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jwh-H6-pPG" id="eIb-sF-ZSo">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -269,7 +283,15 @@
                             <outlet property="delegate" destination="9fc-LV-DaH" id="kq7-pB-wgO"/>
                         </connections>
                     </tableView>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <toolbarItems>
+                        <barButtonItem title="Profile" id="qBa-62-qqw">
+                            <connections>
+                                <segue destination="VgH-OT-pqx" kind="show" id="sZ4-ji-zhF"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="WpF-FJ-F1J"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="legoTable" destination="jEO-Vi-gqN" id="OTB-cz-vzV"/>
@@ -288,10 +310,10 @@
                         <viewControllerLayoutGuide type="bottom" id="5NN-vI-bO7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zhb-0o-RHs">
-                        <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocI-wn-tNu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocI-wn-tNu">
                                 <rect key="frame" x="20" y="271" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="A4N-Wl-GtK"/>
@@ -300,16 +322,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAN-1v-xZF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAN-1v-xZF">
                                 <rect key="frame" x="70" y="271" width="510" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TC2-Ey-fvz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TC2-Ey-fvz">
                                 <rect key="frame" x="20" y="8" width="560" height="255"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-cY-pYh">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-cY-pYh">
                                 <rect key="frame" x="20" y="454" width="178" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ntk-X2-zBC"/>
@@ -320,7 +342,7 @@
                                     <segue destination="soB-Ug-CgK" kind="show" identifier="showPartVariants" id="RKn-dM-Yni"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vRO-W5-fWm" userLabel="Part Description">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vRO-W5-fWm" userLabel="Part Description">
                                 <rect key="frame" x="20" y="300" width="560" height="71"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -349,7 +371,15 @@
                             <constraint firstItem="vRO-W5-fWm" firstAttribute="leading" secondItem="ocI-wn-tNu" secondAttribute="leading" id="t4p-PL-KCU"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <toolbarItems>
+                        <barButtonItem title="Profile" id="qiE-Rv-emN">
+                            <connections>
+                                <segue destination="VgH-OT-pqx" kind="show" id="0il-AA-ngC"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="LG5-hL-Xrh"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="partDescription" destination="vRO-W5-fWm" id="lub-9g-fvX"/>
@@ -367,12 +397,12 @@
             <objects>
                 <tableViewController storyboardIdentifier="Part Variants" title="Part Variants" id="soB-Ug-CgK" customClass="PartVariantsTableViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="awy-GP-blG">
-                        <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="zYS-Za-Ocm" detailTextLabel="vEj-4d-BxX" style="IBUITableViewCellStyleSubtitle" id="2Mh-ej-KXo">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="30" contentMode="center" tableViewCell="2Mh-ej-KXo" id="VQI-8R-ih0">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -401,6 +431,14 @@
                             <outlet property="delegate" destination="soB-Ug-CgK" id="9Fh-nI-X9I"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Profile" id="DLT-yf-qdF">
+                            <connections>
+                                <segue destination="VgH-OT-pqx" kind="show" id="uoF-4Y-aH6"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="o3y-Z6-xhc"/>
                     <connections>
                         <outlet property="legoTable" destination="awy-GP-blG" id="urU-Wj-OJr"/>
                     </connections>
@@ -450,7 +488,7 @@
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Item" id="rPc-DB-snN"/>
+                        <barButtonItem title="Profile" id="Juj-8g-xiN"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Profile" id="O3C-Oi-T2U">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="XLf-pS-rDo">
@@ -499,5 +537,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="53u-Hr-fTf"/>
+        <segue reference="uoF-4Y-aH6"/>
     </inferredMetricsTieBreakers>
 </document>

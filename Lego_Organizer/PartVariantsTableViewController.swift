@@ -91,9 +91,9 @@ class PartVariantsTableViewController: UITableViewController {
         
         let object = datas[indexPath.row]
         
-        print("object: ", object)
+//        print("object: ", object)
         
-        if let userName = object["color_name"].string {
+        if let _ = object["color_name"].string {
 
             cell.textLabel?.text = object["color_name"].string!
             
