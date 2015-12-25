@@ -54,7 +54,7 @@
                     <toolbarItems>
                         <barButtonItem title="Profile" id="ZIn-td-EbN">
                             <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" id="lDH-lg-vLF"/>
+                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="lDH-lg-vLF"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -128,11 +128,12 @@
                     <toolbarItems>
                         <barButtonItem title="Profile" id="otA-iW-Pf6">
                             <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" id="xZA-Sv-Sv9"/>
+                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="xZA-Sv-Sv9"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Lego Organizer" id="W5D-0j-JQ2">
+                        <barButtonItem key="leftBarButtonItem" title="Choose List" id="Iat-Av-qUP"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lWL-E2-0RR">
                             <connections>
                                 <segue destination="SiM-Sq-cSf" kind="show" identifier="addLegoSet" id="6OE-4R-UIb"/>
@@ -219,7 +220,7 @@
                     <toolbarItems>
                         <barButtonItem title="Profile" id="4bf-NB-O0u">
                             <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" id="CF9-wV-Jj4"/>
+                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="CF9-wV-Jj4"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -286,7 +287,7 @@
                     <toolbarItems>
                         <barButtonItem title="Profile" id="qBa-62-qqw">
                             <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" id="sZ4-ji-zhF"/>
+                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="sZ4-ji-zhF"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -374,7 +375,7 @@
                     <toolbarItems>
                         <barButtonItem title="Profile" id="qiE-Rv-emN">
                             <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" id="0il-AA-ngC"/>
+                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="0il-AA-ngC"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -434,7 +435,7 @@
                     <toolbarItems>
                         <barButtonItem title="Profile" id="DLT-yf-qdF">
                             <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" id="uoF-4Y-aH6"/>
+                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="uoF-4Y-aH6"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -537,6 +538,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="53u-Hr-fTf"/>
-        <segue reference="uoF-4Y-aH6"/>
+        <segue reference="xZA-Sv-Sv9"/>
     </inferredMetricsTieBreakers>
 </document>
