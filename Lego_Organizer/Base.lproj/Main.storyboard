@@ -537,7 +537,7 @@
         <image name="default-placeholder-300x300.png" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="lDH-lg-vLF"/>
         <segue reference="53u-Hr-fTf"/>
-        <segue reference="xZA-Sv-Sv9"/>
     </inferredMetricsTieBreakers>
 </document>
