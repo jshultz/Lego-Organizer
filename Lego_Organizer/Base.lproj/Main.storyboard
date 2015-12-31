@@ -473,7 +473,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="API Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y4M-qt-ZJ5">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y4M-qt-ZJ5">
                                 <rect key="frame" x="20" y="148" width="310" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -481,7 +481,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NAM-Rb-Kks">
                                 <rect key="frame" x="20" y="186" width="310" height="143"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">You need an API key from Rebrickable.com for this app to work. Simply go to http://rebrickable.com to get an account. Retrieve the API Key from your profile's "settings" page and add it here.</string>
+                                <string key="text">You need an API key from Rebrickable.com for this app to work. Simply go to http://rebrickable.com to get an account. Enter your username and password and we'll get the API Key for you.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -546,6 +546,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="niN-nJ-Xxb"/>
-        <segue reference="CF9-wV-Jj4"/>
+        <segue reference="xZA-Sv-Sv9"/>
     </inferredMetricsTieBreakers>
 </document>

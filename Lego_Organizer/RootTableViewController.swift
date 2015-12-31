@@ -71,7 +71,9 @@ class RootTableViewController: UITableViewController {
             self.profile = profile
         }
         
-        if profile?.userHash != "" {
+        if ((profile?.userHash) != nil) {
+            
+            print("yo: ", profile?.userHash)
             
             
             Alamofire.request(.GET, "https://rebrickable.com/api/get_user_sets", parameters: ["key": "9BUbjlV9IF", "hash" : (profile?.userHash)!, "format": "json"]).validate().responseJSON { response in
@@ -95,8 +97,19 @@ class RootTableViewController: UITableViewController {
                 }
             }
             
+        } else {
+            self.showAlert("No API Key", errorMessage: "You need an API Key from rebrickable.com. Please add it in the profile.")
         }
         
+    }
+    
+    func showAlert(errorTitle:String, errorMessage:String) {
+        print("in the alert")
+        let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .Alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
