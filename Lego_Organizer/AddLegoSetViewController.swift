@@ -112,7 +112,6 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
                                 self.setListPicker.delegate = self
                                 self.setListPicker.dataSource = self
                                 self.setListPicker.selectRow(1, inComponent: 0, animated: true)
-                                print("self.pickerData[1]:", self.pickerData[1])
                                 self.setList.text = String(UTF8String: self.pickerData[1]!)!
                             }
                         }

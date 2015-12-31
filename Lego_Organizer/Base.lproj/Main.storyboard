@@ -473,11 +473,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y4M-qt-ZJ5">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="API Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y4M-qt-ZJ5">
                                 <rect key="frame" x="20" y="148" width="310" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NAM-Rb-Kks">
+                                <rect key="frame" x="20" y="186" width="310" height="143"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">You need an API key from Rebrickable.com for this app to work. Simply go to http://rebrickable.com to get an account. Retrieve the API Key from your profile's "settings" page and add it here.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -512,10 +520,10 @@
             </objects>
             <point key="canvasLocation" x="1215" y="-1"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="rQ2-fl-9hY">
             <objects>
-                <navigationController toolbarHidden="NO" id="kHi-Jo-724" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="kHi-Jo-724" customClass="NavigationViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pFb-yF-Ugn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -537,7 +545,7 @@
         <image name="default-placeholder-300x300.png" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lDH-lg-vLF"/>
-        <segue reference="53u-Hr-fTf"/>
+        <segue reference="niN-nJ-Xxb"/>
+        <segue reference="CF9-wV-Jj4"/>
     </inferredMetricsTieBreakers>
 </document>
