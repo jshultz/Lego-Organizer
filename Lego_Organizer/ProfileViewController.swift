@@ -93,6 +93,7 @@ class ProfileViewController: UIViewController {
                     try! self.realm.write {
                         self.realm.add(profile, update: true)
                         print("i wrote it")
+                        self.performSegueWithIdentifier("showLego", sender: self)
                     }
                     
                 } else {
@@ -117,6 +118,7 @@ class ProfileViewController: UIViewController {
                     try! self.realm.write {
                         self.realm.add(profile, update: true)
                         print("i wrote it")
+                        self.performSegueWithIdentifier("showLego", sender: self)
                     }
                     
                 } else {
@@ -126,7 +128,6 @@ class ProfileViewController: UIViewController {
             
         }
         
-                performSegueWithIdentifier("showLego", sender: self)
     }
     
     

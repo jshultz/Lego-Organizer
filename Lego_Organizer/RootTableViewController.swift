@@ -26,6 +26,8 @@ class RootTableViewController: UITableViewController {
 //    var datas: [JSON] = []
     var datas: JSON = []
     
+    var notificationToken: NotificationToken?
+    
     @IBOutlet var legoTable: UITableView!
     
 
@@ -37,6 +39,12 @@ class RootTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        if let _ = realm.objects(Profile).first {
+            
+        }
+        setupUI()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +65,14 @@ class RootTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        setupUI()
+        notificationToken = realm.addNotificationBlock { [unowned self] note, realm in
+            if let profile = realm.objects(Profile).first {
+                self.profile = profile
+                print("in the notification token")
+                print("profile: ", self.profile)
+                self.setupUI()
+            }
+        }
     }
     
     func getUserSets(userHash:String, completionHandler: (JSON?) -> ()) -> () {
@@ -73,9 +88,9 @@ class RootTableViewController: UITableViewController {
         
         if ((profile?.userHash) != nil) {
             
-            print("yo: ", profile?.userHash)
+            print("in the if: ", profile?.userHash)
             
-            
+        
             Alamofire.request(.GET, "https://rebrickable.com/api/get_user_sets", parameters: ["key": "9BUbjlV9IF", "hash" : (profile?.userHash)!, "format": "json"]).validate().responseJSON { response in
                 switch response.result {
                 case .Success:
@@ -98,16 +113,28 @@ class RootTableViewController: UITableViewController {
             }
             
         } else {
-            self.showAlert("No API Key", errorMessage: "You need an API Key from rebrickable.com. Please add it in the profile.")
+            print("in the else: ", profile?.userHash)
+            self.performSegueWithIdentifier("showProfile", sender: self)
+//            self.showAlert("No API Key", errorMessage: "You need an API Key from rebrickable.com. Please add it in the profile.")
+            
         }
         
     }
     
     func showAlert(errorTitle:String, errorMessage:String) {
-        print("in the alert")
         let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .Alert)
         
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                alert.dismissViewControllerAnimated(true, completion: {
+                    print("i'm in the disimissal")
+                    self.performSegueWithIdentifier("showProfile", sender: self)
+                })
+                
+            })
+        })
+        
+        alert.addAction(ok)
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
