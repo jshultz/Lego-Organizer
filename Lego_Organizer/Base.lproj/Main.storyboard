@@ -28,7 +28,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set List" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7X2-2C-hJi">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set List" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7X2-2C-hJi">
                                 <rect key="frame" x="20" y="148" width="363" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -36,13 +36,20 @@
                                     <action selector="setListEdit:" destination="SiM-Sq-cSf" eventType="editingDidEnd" id="ebk-yQ-LF2"/>
                                 </connections>
                             </textField>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffo-YD-In0">
+                            <pickerView alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffo-YD-In0">
                                 <rect key="frame" x="0.0" y="332" width="600" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="216" id="5iU-OI-mVf"/>
                                     <constraint firstAttribute="width" constant="600" id="669-l2-TAv"/>
                                 </constraints>
                             </pickerView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="naL-Th-AV4">
+                                <rect key="frame" x="20" y="148" width="363" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Add your LEGO® sets here. Simply enter the set # (ex. 75108-1) and the quantity. Even if your set does not show a "-1" in the product code, please still add it, otherwise it may not be found.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -55,6 +62,11 @@
                         <barButtonItem title="Profile" id="ZIn-td-EbN">
                             <connections>
                                 <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="lDH-lg-vLF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Sets" id="8h0-i3-NsT">
+                            <connections>
+                                <segue destination="eNQ-ye-QbU" kind="show" id="34b-d8-g24"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -131,9 +143,9 @@
                                 <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="xZA-Sv-Sv9"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem title="Sets" id="emK-9r-8HP"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Lego Organizer" id="W5D-0j-JQ2">
-                        <barButtonItem key="leftBarButtonItem" title="Choose List" id="Iat-Av-qUP"/>
+                    <navigationItem key="navigationItem" title="LEGO® Organizer" id="W5D-0j-JQ2">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lWL-E2-0RR">
                             <connections>
                                 <segue destination="SiM-Sq-cSf" kind="show" identifier="addLegoSet" id="6OE-4R-UIb"/>
@@ -223,6 +235,11 @@
                                 <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="CF9-wV-Jj4"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem title="Sets" id="jUQ-px-5Nf">
+                            <connections>
+                                <segue destination="eNQ-ye-QbU" kind="show" id="qX8-uw-rgY"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Title" id="o9z-OU-Q3Z"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -235,6 +252,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPn-nf-cGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Sets" id="yPR-p4-er4"/>
+                <barButtonItem title="Sets" id="vdK-WJ-A0Z"/>
+                <barButtonItem title="Sets" id="y9K-wT-b7J"/>
             </objects>
             <point key="canvasLocation" x="2050" y="-718"/>
         </scene>
@@ -288,6 +308,11 @@
                         <barButtonItem title="Profile" id="qBa-62-qqw">
                             <connections>
                                 <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="sZ4-ji-zhF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Sets" id="5Hz-x5-Bz5">
+                            <connections>
+                                <segue destination="eNQ-ye-QbU" kind="show" id="MeX-Al-k3X"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -378,6 +403,11 @@
                                 <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="0il-AA-ngC"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem title="Sets" id="NUt-yC-HUB">
+                            <connections>
+                                <segue destination="eNQ-ye-QbU" kind="show" id="fMZ-dE-1MH"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Title" id="LG5-hL-Xrh"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -436,6 +466,11 @@
                         <barButtonItem title="Profile" id="DLT-yf-qdF">
                             <connections>
                                 <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="uoF-4Y-aH6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Sets" id="Kx3-Lk-RD5">
+                            <connections>
+                                <segue destination="eNQ-ye-QbU" kind="show" id="eLc-SV-mbT"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -498,6 +533,11 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem title="Profile" id="Juj-8g-xiN"/>
+                        <barButtonItem title="Sets" id="um9-FU-CLn">
+                            <connections>
+                                <segue destination="eNQ-ye-QbU" kind="show" id="Oe1-vx-8N0"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Profile" id="O3C-Oi-T2U">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="XLf-pS-rDo">
@@ -517,6 +557,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pwd-ZL-Fie" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Sets" id="Xtg-CJ-WcC"/>
             </objects>
             <point key="canvasLocation" x="1215" y="-1"/>
         </scene>
@@ -545,7 +586,7 @@
         <image name="default-placeholder-300x300.png" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="niN-nJ-Xxb"/>
+        <segue reference="qX8-uw-rgY"/>
         <segue reference="xZA-Sv-Sv9"/>
     </inferredMetricsTieBreakers>
 </document>

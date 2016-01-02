@@ -23,6 +23,8 @@ class LegoSetViewController: UIViewController {
     
     var activeSet = -1
     
+    var legoSet:Set? = nil
+    
 
     @IBOutlet weak var setNumberLabel: UILabel!
     
@@ -63,7 +65,7 @@ class LegoSetViewController: UIViewController {
             Alamofire.request(.GET, "https://rebrickable.com/api/get_set_match", parameters: [
                 "key": "9BUbjlV9IF",
                 "hash" : (profile?.userHash)!,
-                "set" : self.setId["set_id"].string!,
+                "set" : (self.legoSet?.set_id)!,
                 "format": "json"]).validate().responseJSON { response in
                 switch response.result {
                 case .Success:
@@ -74,19 +76,23 @@ class LegoSetViewController: UIViewController {
                             let total_parts:String = String(data["total_parts"])
                             let total_missing:String = String(data["total_missing"])
                             
-                            self.setNumberLabel.text = String(UTF8String: self.setId["set_id"].string!)!
+//                            self.title = String(UTF8String: self.setId["set_id"].string!)! + " " + String(UTF8String: self.setId["descr"].string!)!
                             
-                            self.setNameLabel.text = String(UTF8String: self.setId["descr"].string!)!
+                            self.title = (self.legoSet?.set_id)! + " " + (self.legoSet?.descr)!
                             
-                            let pieces:String = String(UTF8String: self.setId["pieces"].string!)!
+                            self.setNumberLabel.text = self.legoSet?.set_id
                             
-                            let year:String = String(UTF8String: self.setId["year"].string!)!
+                            self.setNameLabel.text = self.legoSet?.descr
+                            
+                            let pieces:String = (self.legoSet?.pieces)!
+                            
+                            let year:String = (self.legoSet?.year)!
                             
                             self.setDescriptionLabel.text = "Set consists of \(pieces) pieces and was first produced in \(year). There are \(total_parts) parts in this set and you have \(total_missing) missing."
                             
                             let imageView = self.setImage as UIImageView
-                            
-                            let img_url = String(UTF8String: self.setId["img_sm"].string!)!
+                                                        
+                            let img_url:String = (self.legoSet?.img_sm)!
                             
                             if let url = NSURL(string: "\(img_url)") {
                                 if let data = NSData(contentsOfURL: url) {
@@ -121,9 +127,9 @@ class LegoSetViewController: UIViewController {
             
             //            print("activeSet: ", self.datas[activeSet])
             
-            let setId = self.setId
+            let setId = self.legoSet
             
-            PartsController.setId = setId
+            PartsController.legoSet = setId
         }
         
     }

@@ -16,6 +16,8 @@ class RootTableViewController: UITableViewController {
     let realm = try! Realm()
     
     var profile:Profile? = nil
+    var set:Set? = nil
+    let array = try! Realm().objects(Set)
     
     var apiKey:String = ""
     
@@ -61,16 +63,13 @@ class RootTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return datas.count
+        return array.count
     }
     
     override func viewWillAppear(animated: Bool) {
         notificationToken = realm.addNotificationBlock { [unowned self] note, realm in
             if let profile = realm.objects(Profile).first {
                 self.profile = profile
-                print("in the notification token")
-                print("profile: ", self.profile)
-                self.setupUI()
             }
         }
     }
@@ -87,9 +86,6 @@ class RootTableViewController: UITableViewController {
         }
         
         if ((profile?.userHash) != nil) {
-            
-            print("in the if: ", profile?.userHash)
-            
         
             Alamofire.request(.GET, "https://rebrickable.com/api/get_user_sets", parameters: ["key": "9BUbjlV9IF", "hash" : (profile?.userHash)!, "format": "json"]).validate().responseJSON { response in
                 switch response.result {
@@ -98,13 +94,11 @@ class RootTableViewController: UITableViewController {
                         var jsonObj = JSON(response.result.value!)
 //                        print("jsonObj: ", jsonObj)
                         
-                        if let data:JSON = JSON(jsonObj[0]["sets"].arrayValue) {
-                            self.datas = data
-//                            print("jsonObj: ", jsonObj)
-//                            print("datas: ", self.datas)
-//                            print("data: ", response.result.value)
-                            self.legoTable.reloadData()
-                        }
+                        let items = JSON(jsonObj[0]["sets"].arrayValue)
+                        
+//                        print("items: ", items)
+                        
+                        self.loadLego(jsonObj)
                     }
                     
                 case .Failure(let error):
@@ -119,6 +113,114 @@ class RootTableViewController: UITableViewController {
             
         }
         
+    }
+    
+    func loadLego(items:JSON){
+        
+        if let things = items[0]["sets"].array {
+            
+            for thing in things {
+                
+                var predicate = NSPredicate()
+                
+                if let _ = thing["set_id"].string {
+                    predicate = NSPredicate(format: "set_id = %@", thing["set_id"].string!)
+                }
+                
+                let updatedSet = realm.objects(Set).filter(predicate)
+                
+                if updatedSet.count > 0 {
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        
+                        // Get realm and table instances for this thread
+                        let realm = try! Realm()
+                        
+                        // Break up the writing blocks into smaller portions
+                        // by starting a new transaction
+                        for idx1 in 0..<1 {
+                            realm.beginWrite()
+                            
+                            // Add row via dictionary. Property order is ignored.
+                            for idx2 in 0..<1 {
+                                print("set_id: ", thing["set_id"].string!)
+                                
+                                let id = updatedSet.first!.id
+                                let set_id:String = thing["set_id"].string!
+                                let descr:String = thing["descr"].string!
+                                let img_sm:String = thing["img_sm"].string!
+                                let img_tn:String = thing["img_tn"].string!
+                                let pieces:String = thing["pieces"].string!
+                                let qty:String = thing["qty"].string!
+                                let year:String = thing["year"].string!
+                                
+                                realm.create(Set.self, value: [
+                                    "id": updatedSet.first!.id,
+                                    "set_id": "\(set_id)",
+                                    "descr": "\(descr)",
+                                    "img_sm": "\(img_sm)",
+                                    "img_tn": "\(img_tn)",
+                                    "pieces": "\(pieces)",
+                                    "qty": "\(qty)",
+                                    "year": "\(year)"
+                                    ], update: true)
+                            }
+                            
+                            // Commit the write transaction
+                            // to make this data available to other threads
+                            print("updated item")
+                            try! realm.commitWrite()
+                        }
+                        
+                    })
+                    
+                } else {
+                    
+                    let set = Set()
+                    
+                    if let set_id = thing["set_id"].string {
+                        set.set_id = set_id
+                    }
+                    if let descr = thing["descr"].string {
+                        set.descr = descr
+                    }
+                    if let img_sm = thing["img_sm"].string {
+                        set.img_sm = img_sm
+                    }
+                    if let img_tn = thing["img_tn"].string {
+                        set.img_tn = img_tn
+                    }
+                    if let pieces = thing["pieces"].string {
+                        set.pieces = pieces
+                    }
+                    if let qty = thing["qty"].string {
+                        set.qty = qty
+                    }
+                    if let year = thing["year"].string {
+                        set.year = year
+                    }
+                    
+                    realm.beginWrite()
+                    realm.add(set)
+                    
+                    do {
+                        print("wrote new item")
+                        try realm.commitWrite()
+                        
+                    } catch {
+                        print("could not add item")
+                    }
+
+                }
+                
+            }
+        }
+        
+        
+//        print(self.uppDatesCollection.count)
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.reloadData()
+        }
     }
     
     func showAlert(errorTitle:String, errorMessage:String) {
@@ -147,20 +249,18 @@ class RootTableViewController: UITableViewController {
         
         let subTitle = cell.viewWithTag(20) as! UILabel
         
-        let object = datas[indexPath.row]
+        let object = array[indexPath.row]
         
-        if let userName = object["set_id"].string {
-            let img_url = String(UTF8String: object["img_sm"].string!)!
-//            print("userName", userName)
-            cell.textLabel?.text = userName
-            
-            if let url = NSURL(string: "\(img_url)") {
-                if let data = NSData(contentsOfURL: url) {
-                    imageView.image = UIImage(data: data)
-                }        
+        let img_url = object.img_sm
+        //            print("userName", userName)
+        cell.textLabel?.text = object.set_id
+        
+        if let url = NSURL(string: "\(img_url)") {
+            if let data = NSData(contentsOfURL: url) {
+                imageView.image = UIImage(data: data)
             }
-            subTitle.text = object["descr"].string
         }
+        subTitle.text = object.descr
 //        print("object: ", object)
         
         return cell
@@ -219,14 +319,14 @@ class RootTableViewController: UITableViewController {
         if segue.identifier == "newPlace" {
             
         } else if segue.identifier == "showLegoSet" {
+            let cell = sender as! UITableViewCell
+            let indexPath = legoTable.indexPathForCell(cell)
             
             let legoSetController:LegoSetViewController = segue.destinationViewController as! LegoSetViewController
             
-//            print("activeSet: ", self.datas[activeSet])
+            let legoSet = self.array[indexPath!.row]
             
-            let setId = self.datas[activeSet]
-            
-            legoSetController.setId = setId
+            legoSetController.legoSet = legoSet as! Set
         }
         
         self.title = ""

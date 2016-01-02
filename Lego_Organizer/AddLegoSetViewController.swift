@@ -73,7 +73,7 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 "key": "9BUbjlV9IF",
                 "hash" : (profile?.userHash)!,
                 "format": "json",
-                "setlist_id": listID,
+                "setlist_id": "1",
                 "qty": setQuantity.text!,
                 "set": setId.text!
             ]

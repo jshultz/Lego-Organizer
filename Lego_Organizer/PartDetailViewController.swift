@@ -15,6 +15,8 @@ class PartDetailViewController: UIViewController {
     
     var partId:JSON = nil
     
+    let legoSet:Set? = nil
+    
     @IBOutlet weak var partIdLabel: UILabel!
     
     @IBOutlet weak var partNameLabel: UILabel!

@@ -18,10 +18,6 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var emailAddress: UITextField!
     
-    @IBAction func btnSave(sender: AnyObject) {
-        
-    }
-    
     @IBOutlet weak var passwordField: UITextField!
     
     
@@ -117,7 +113,7 @@ class ProfileViewController: UIViewController {
                     
                     try! self.realm.write {
                         self.realm.add(profile, update: true)
-                        print("i wrote it")
+//                        print("i wrote it")
                         self.performSegueWithIdentifier("showLego", sender: self)
                     }
                     

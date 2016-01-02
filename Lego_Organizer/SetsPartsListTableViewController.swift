@@ -19,6 +19,8 @@ class SetsPartsListTableViewController: UITableViewController {
     var activePart = -1
     var profile:Profile? = nil
     
+    var legoSet:Set? = nil
+    
     @IBOutlet var legoTable: UITableView!
     
     
@@ -34,7 +36,7 @@ class SetsPartsListTableViewController: UITableViewController {
             
             Alamofire.request(.GET, "https://rebrickable.com/api/get_set_parts", parameters: [
                 "key": "9BUbjlV9IF",
-                "set" : String(UTF8String: self.setId["set_id"].string!)!,
+                "set" : (self.legoSet?.set_id)!,
                 "format": "json"]).validate().responseJSON { response in
                 switch response.result {
                 case .Success:
