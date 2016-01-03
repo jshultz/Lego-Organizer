@@ -17,7 +17,7 @@ class RootTableViewController: UITableViewController {
     
     var profile:Profile? = nil
     var set:Set? = nil
-    let array = try! Realm().objects(Set)
+    var array = try! Realm().objects(Set)
     
     var apiKey:String = ""
     
@@ -92,11 +92,8 @@ class RootTableViewController: UITableViewController {
                 case .Success:
                     if response.result.value != nil {
                         var jsonObj = JSON(response.result.value!)
-//                        print("jsonObj: ", jsonObj)
                         
                         let items = JSON(jsonObj[0]["sets"].arrayValue)
-                        
-//                        print("items: ", items)
                         
                         self.loadLego(jsonObj)
                     }
@@ -216,9 +213,8 @@ class RootTableViewController: UITableViewController {
             }
         }
         
-        
-//        print(self.uppDatesCollection.count)
         dispatch_async(dispatch_get_main_queue()) {
+            self.array = try! Realm().objects(Set)
             self.tableView.reloadData()
         }
     }
@@ -326,7 +322,7 @@ class RootTableViewController: UITableViewController {
             
             let legoSet = self.array[indexPath!.row]
             
-            legoSetController.legoSet = legoSet as! Set
+            legoSetController.legoSet = legoSet 
         }
         
         self.title = ""
