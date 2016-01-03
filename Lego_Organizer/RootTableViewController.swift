@@ -42,9 +42,6 @@ class RootTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        if let _ = realm.objects(Profile).first {
-            
-        }
         setupUI()
         
     }
@@ -80,6 +77,7 @@ class RootTableViewController: UITableViewController {
     
     func setupUI() {
         self.title = "Lego Organizer"
+        self.tableView.reloadData()
         
         if let profile = realm.objects(Profile).first {
             self.profile = profile
@@ -140,8 +138,6 @@ class RootTableViewController: UITableViewController {
                             
                             // Add row via dictionary. Property order is ignored.
                             for idx2 in 0..<1 {
-                                print("set_id: ", thing["set_id"].string!)
-                                
                                 let id = updatedSet.first!.id
                                 let set_id:String = thing["set_id"].string!
                                 let descr:String = thing["descr"].string!
@@ -165,7 +161,6 @@ class RootTableViewController: UITableViewController {
                             
                             // Commit the write transaction
                             // to make this data available to other threads
-                            print("updated item")
                             try! realm.commitWrite()
                         }
                         
@@ -275,8 +270,12 @@ class RootTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            print("array[indexPath.row]:", array[indexPath.row])
+            realm.beginWrite()
+            realm.delete(array[indexPath.row] as Object)
+            try! realm.commitWrite()
+            self.tableView.reloadData()
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
