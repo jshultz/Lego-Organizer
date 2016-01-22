@@ -18,6 +18,7 @@ class Set: Object {
     dynamic var img_tn = ""
     dynamic var pieces = ""
     dynamic var qty = ""
+    dynamic var theme = ""
     dynamic var year = ""
     
     // Specify properties to ignore (Realm won't persist these)

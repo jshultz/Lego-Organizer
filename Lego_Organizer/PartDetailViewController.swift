@@ -40,6 +40,8 @@ class PartDetailViewController: UIViewController {
     
     func setupUI() {
         
+        self.title = "Brickly: Part Detail View"
+        
         if self.partId != nil {
             Alamofire.request(.GET, "https://rebrickable.com/api/get_part", parameters: ["key": "9BUbjlV9IF", "part_id" : String(UTF8String: self.partId["part_id"].string!)!, "format": "json"]).validate().responseJSON { response in
                 switch response.result {

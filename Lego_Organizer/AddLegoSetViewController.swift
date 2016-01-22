@@ -34,20 +34,79 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func saveSet(sender: AnyObject) {
         
-        createSet("test set", password: "password") { (responeValue) -> () in
-            
-            if responeValue != nil {
-                let temp:String = String(UTF8String: responeValue!)!
-                switch String(temp) {
-                case "NOSET":
-                    self.showAlert("Error", errorMessage: "No set exists with that id. Should be in ####-# format.")
-                     print("NOSET: ", String(temp))
-                case "SUCCESS":
-                    self.performSegueWithIdentifier("showLego", sender: self)
-                default:
-                    print("default: ", String(temp))
-                }
-                
+        if self.setId.text != "" {
+            Alamofire.request(.GET, "https://rebrickable.com/api/get_set", parameters: [
+                "key": "9BUbjlV9IF",
+                "set_id": self.setId.text!,
+                "format": "json"]).validate().responseJSON { response in
+                    switch response.result {
+                    case .Success:
+                        if response.result.value != nil {
+                            let jsonObj = JSON(response.result.value!)
+                            
+                            
+                            
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                
+                                // Get realm and table instances for this thread
+                                let realm = try! Realm()
+                                
+                                let updatedItem = realm.objects(Set).filter(NSPredicate(format: "set_id = %@", "\(self.setId.text!)")).first
+                                // Break up the writing blocks into smaller portions
+                                // by starting a new transaction
+                                for idx1 in 0..<1 {
+                                    realm.beginWrite()
+                                    
+                                    // Add row via dictionary. Property order is ignored.
+                                    for idx2 in 0..<1 {
+                                        
+                                        let set_id:String = jsonObj[0]["set_id"].string!
+                                        let descr:String = jsonObj[0]["descr"].string!
+                                        let img_sm:String = jsonObj[0]["img_sm"].string!
+                                        let img_tn:String = jsonObj[0]["img_tn"].string!
+                                        let pieces:String = jsonObj[0]["pieces"].string!
+                                        let qty:String = self.setQuantity.text!
+                                        let theme:String = jsonObj[0]["theme"].string!
+                                        let year:String = jsonObj[0]["year"].string!
+                                        
+                                        if (updatedItem != nil) {
+                                            realm.create(Set.self, value: [
+                                                "id" : "\(updatedItem!.id)",
+                                                "set_id": "\(set_id)",
+                                                "descr": "\(descr)",
+                                                "img_sm": "\(img_sm)",
+                                                "img_tn": "\(img_tn)",
+                                                "pieces": "\(pieces)",
+                                                "qty": "\(qty)",
+                                                "theme": "\(theme)",
+                                                "year": "\(year)"
+                                                ], update: true)
+                                        } else {
+                                            realm.create(Set.self, value: [
+                                                "set_id": "\(set_id)",
+                                                "descr": "\(descr)",
+                                                "img_sm": "\(img_sm)",
+                                                "img_tn": "\(img_tn)",
+                                                "pieces": "\(pieces)",
+                                                "qty": "\(qty)",
+                                                "theme": "\(theme)",
+                                                "year": "\(year)"
+                                                ], update: true)
+                                        }
+                                    }
+                                    
+                                    // Commit the write transaction
+                                    // to make this data available to other threads
+                                    try! realm.commitWrite()
+                                    self.performSegueWithIdentifier("showLego", sender: self)
+                                }
+                                
+                            })
+                        }
+                        
+                    case .Failure(let error):
+                        print(error)
+                    }
             }
         }
         
@@ -62,76 +121,17 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    func createSet(username:String, password:String, completionHandler: (String?) -> ()) -> () {
-        
-        if let profile = realm.objects(Profile).first {
-            self.profile = profile
-        }
-        
-        Alamofire.request(.POST, "https://rebrickable.com/api/set_user_set",
-            parameters: [
-                "key": "9BUbjlV9IF",
-                "hash" : (profile?.userHash)!,
-                "format": "json",
-                "setlist_id": "1",
-                "qty": setQuantity.text!,
-                "set": setId.text!
-            ]
-            )
-            .responseString { response in
-                
-                completionHandler(response.result.value)
-                
-        }
-    }
     
-
     func setupUI() {
         
-        if let profile = realm.objects(Profile).first {
-            self.profile = profile
-        }
-        
-        if profile?.userHash != "" {
-            
-            Alamofire.request(.GET, "https://rebrickable.com/api/get_user_setlists", parameters: [
-                "key": "9BUbjlV9IF",
-                "hash" : (profile?.userHash)!,
-                "format": "json"]).validate().responseJSON { response in
-                    switch response.result {
-                    case .Success:
-                        if response.result.value != nil {
-                            let jsonObj = JSON(response.result.value!)
-                            
-                            if let items = jsonObj["sets"].array {
-                                for item in items {
-                                    if let setlist_id = item["setlist_id"].string {
-                                        self.pickerData[Int(item["setlist_id"].string!)!] = String(item["name"].string!)
-                                    }
-                                }
-                                self.setListPicker.delegate = self
-                                self.setListPicker.dataSource = self
-                                self.setListPicker.selectRow(1, inComponent: 0, animated: true)
-                                self.setList.text = String(UTF8String: self.pickerData[1]!)!
-                            }
-                        }
-                        
-                    case .Failure(let error):
-                        print(error)
-                    }
-            }
-            
-        }
-        
-        
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        setListPicker.hidden = true
+        //        setListPicker.hidden = true
         
-//        self.view.addSubview(pickerView)
+        //        self.view.addSubview(pickerView)
         
         // Do any additional setup after loading the view.
     }
@@ -139,7 +139,7 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
     override func viewWillAppear(animated: Bool) {
         setupUI()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -165,19 +165,19 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
         self.setList.text = self.pickerData[row]
-//        print("self.pickerData: ", self.pickerData)
+        //        print("self.pickerData: ", self.pickerData)
         self.listID = Int(row)
-//        print("row: ", row )
+        //        print("row: ", row )
     }
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

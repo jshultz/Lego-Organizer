@@ -53,18 +53,21 @@ class LegoSetViewController: UIViewController {
         setupUI()
     }
     
+    func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+            completion(data: data, response: response, error: error)
+            }.resume()
+    }
+    
     func setupUI() {
         
-        if let profile = realm.objects(Profile).first {
-            self.profile = profile
-        }
+        self.title = "Brickly: Set View"
         
         if profile?.userHash != "" {
             
             
-            Alamofire.request(.GET, "https://rebrickable.com/api/get_set_match", parameters: [
+            Alamofire.request(.GET, "https://rebrickable.com/api/get_set_parts", parameters: [
                 "key": "9BUbjlV9IF",
-                "hash" : (profile?.userHash)!,
                 "set" : (self.legoSet?.set_id)!,
                 "format": "json"]).validate().responseJSON { response in
                 switch response.result {
@@ -94,13 +97,21 @@ class LegoSetViewController: UIViewController {
                                                         
                             let img_url:String = (self.legoSet?.img_sm)!
                             
-                            if let url = NSURL(string: "\(img_url)") {
-                                if let data = NSData(contentsOfURL: url) {
-                                    imageView.image = UIImage(data: data)
+                            imageView.contentMode = .ScaleAspectFit
+                            
+                            if let checkedUrl = NSURL(string: "\(img_url)") {
+                                //            downloadImage(checkedUrl)
+                                imageView.contentMode = .ScaleAspectFit
+                                
+                                self.getDataFromUrl(checkedUrl) { (data, response, error)  in
+                                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                                        guard let data = data where error == nil else { return }
+//                                        print(response?.suggestedFilename ?? "")
+//                                        print("Download Finished")
+                                        imageView.image = UIImage(data: data)
+                                    }
                                 }
                             }
-                            
-                            
                         }
                     }
                     

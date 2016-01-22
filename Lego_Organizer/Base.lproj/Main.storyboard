@@ -9,7 +9,7 @@
         <!--Add Lego Set-->
         <scene sceneID="WVk-5B-s5F">
             <objects>
-                <viewController title="Add Lego Set" id="SiM-Sq-cSf" customClass="AddLegoSetViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add Lego Set" id="SiM-Sq-cSf" customClass="AddLegoSetViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kv1-py-yaB"/>
                         <viewControllerLayoutGuide type="bottom" id="Uwp-fx-5IX"/>
@@ -18,13 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1N-rT-g3y">
-                                <rect key="frame" x="20" y="110" width="363" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Set Id (ex: 75108-1)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-YG-R7R">
-                                <rect key="frame" x="20" y="72" width="363" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Set Id (ex: 75108-1)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-YG-R7R">
+                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="FUv-CP-wOz"/>
+                                    <constraint firstAttribute="height" constant="30" id="zgo-fh-Ehw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -43,30 +42,50 @@
                                     <constraint firstAttribute="width" constant="600" id="669-l2-TAv"/>
                                 </constraints>
                             </pickerView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="naL-Th-AV4">
-                                <rect key="frame" x="20" y="148" width="363" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="naL-Th-AV4">
+                                <rect key="frame" x="20" y="148" width="560" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Add your LEGO® sets here. Simply enter the set # (ex. 75108-1) and the quantity. Even if your set does not show a "-1" in the product code, please still add it, otherwise it may not be found.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1N-rT-g3y">
+                                <rect key="frame" x="20" y="110" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1th-f4-bYa"/>
+                                    <constraint firstAttribute="width" constant="560" id="6AX-Rb-zep"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="ffo-YD-In0" secondAttribute="trailing" constant="-20" id="lWW-ef-5ZC"/>
-                            <constraint firstItem="Uwp-fx-5IX" firstAttribute="top" secondItem="ffo-YD-In0" secondAttribute="bottom" constant="8" id="o4r-Lr-04C"/>
-                            <constraint firstItem="ffo-YD-In0" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" constant="-20" id="tcK-Kd-IZB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="naL-Th-AV4" secondAttribute="trailing" id="1fm-2d-q3P"/>
+                            <constraint firstItem="naL-Th-AV4" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" id="2Ff-X5-FYr"/>
+                            <constraint firstItem="Dyo-YG-R7R" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" id="4PG-dx-QhZ"/>
+                            <constraint firstItem="naL-Th-AV4" firstAttribute="top" secondItem="A1N-rT-g3y" secondAttribute="bottom" constant="8" id="ABc-36-QOU"/>
+                            <constraint firstItem="Uwp-fx-5IX" firstAttribute="top" secondItem="ffo-YD-In0" secondAttribute="bottom" constant="8" symbolic="YES" id="Dev-Zo-eDY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="A1N-rT-g3y" secondAttribute="trailing" id="FbC-6T-bMM"/>
+                            <constraint firstItem="ffo-YD-In0" firstAttribute="top" secondItem="naL-Th-AV4" secondAttribute="bottom" constant="56" id="M6J-Vh-mKs"/>
+                            <constraint firstItem="ffo-YD-In0" firstAttribute="centerX" secondItem="A1N-rT-g3y" secondAttribute="centerX" id="QFQ-HT-Nff"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dyo-YG-R7R" secondAttribute="trailing" id="UFp-Ck-WJO"/>
+                            <constraint firstItem="A1N-rT-g3y" firstAttribute="top" secondItem="Dyo-YG-R7R" secondAttribute="bottom" constant="8" id="h3a-Uu-hpX"/>
+                            <constraint firstItem="Dyo-YG-R7R" firstAttribute="top" secondItem="Kv1-py-yaB" secondAttribute="bottom" constant="8" id="qfO-UA-zIO"/>
+                            <constraint firstItem="A1N-rT-g3y" firstAttribute="leading" secondItem="J1b-DG-gP4" secondAttribute="leadingMargin" id="rSf-xM-hzd"/>
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Profile" id="ZIn-td-EbN">
-                            <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="lDH-lg-vLF"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="BcS-pZ-ee0"/>
                         <barButtonItem title="Sets" id="8h0-i3-NsT">
                             <connections>
                                 <segue destination="eNQ-ye-QbU" kind="show" id="34b-d8-g24"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="vcL-FZ-31w"/>
+                        <barButtonItem image="email.png" id="rHa-Af-mMg">
+                            <connections>
+                                <segue destination="sbC-lT-raX" kind="show" id="aeh-kc-IRI"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -94,7 +113,7 @@
         <!--Lego Organizer-->
         <scene sceneID="cmv-05-M3G">
             <objects>
-                <tableViewController title="Lego Organizer" id="eNQ-ye-QbU" customClass="RootTableViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Lego Organizer" id="eNQ-ye-QbU" customClass="RootTableViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="s8B-PL-YB5">
                         <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,14 +157,16 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Profile" id="otA-iW-Pf6">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="huU-Lt-9o9"/>
+                        <barButtonItem title="Sets" id="emK-9r-8HP"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="bYm-1D-rjH"/>
+                        <barButtonItem image="email.png" id="s2s-7p-jb9">
                             <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="xZA-Sv-Sv9"/>
+                                <segue destination="sbC-lT-raX" kind="show" id="1US-BF-S9d"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="Sets" id="emK-9r-8HP"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="LEGO® Organizer" id="W5D-0j-JQ2">
+                    <navigationItem key="navigationItem" title="Brickly: Organizer and Tracker for LEGO®" id="W5D-0j-JQ2">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lWL-E2-0RR">
                             <connections>
                                 <segue destination="SiM-Sq-cSf" kind="show" identifier="addLegoSet" id="6OE-4R-UIb"/>
@@ -166,7 +187,7 @@
         <!--Lego Set View-->
         <scene sceneID="kQD-La-LzM">
             <objects>
-                <viewController storyboardIdentifier="Lego Set" title="Lego Set View" id="RDT-Gb-Ysd" customClass="LegoSetViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Lego Set" title="Lego Set View" id="RDT-Gb-Ysd" customClass="LegoSetViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FSz-8D-ePm"/>
                         <viewControllerLayoutGuide type="bottom" id="i0j-Rc-4kS"/>
@@ -175,8 +196,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsU-MD-ukD">
-                                <rect key="frame" x="20" y="263" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsU-MD-ukD">
+                                <rect key="frame" x="45" y="263" width="17" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="yin-uJ-cdS"/>
                                 </constraints>
@@ -184,16 +205,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omo-FN-Bvo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omo-FN-Bvo">
                                 <rect key="frame" x="70" y="263" width="510" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qit-hF-Tz6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qit-hF-Tz6">
                                 <rect key="frame" x="20" y="8" width="560" height="247"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHq-BA-g36">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHq-BA-g36">
                                 <rect key="frame" x="20" y="292" width="560" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="87" id="4E6-hQ-OHV"/>
@@ -202,7 +223,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Law-5I-Cfb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Law-5I-Cfb">
                                 <rect key="frame" x="20" y="454" width="113" height="30"/>
                                 <state key="normal" title="Get Set Part List"/>
                                 <connections>
@@ -216,28 +237,30 @@
                             <constraint firstItem="IsU-MD-ukD" firstAttribute="firstBaseline" secondItem="omo-FN-Bvo" secondAttribute="firstBaseline" id="1h0-gB-7Oz"/>
                             <constraint firstItem="omo-FN-Bvo" firstAttribute="trailing" secondItem="Qit-hF-Tz6" secondAttribute="trailing" id="9pL-fT-0L7"/>
                             <constraint firstItem="IsU-MD-ukD" firstAttribute="top" secondItem="Qit-hF-Tz6" secondAttribute="bottom" constant="8" symbolic="YES" id="Esy-6e-mfl"/>
-                            <constraint firstItem="IsU-MD-ukD" firstAttribute="leading" secondItem="Qit-hF-Tz6" secondAttribute="leading" id="FcK-CP-t5M"/>
+                            <constraint firstItem="IsU-MD-ukD" firstAttribute="leading" secondItem="Qit-hF-Tz6" secondAttribute="leading" constant="25" id="FcK-CP-t5M"/>
                             <constraint firstItem="iHq-BA-g36" firstAttribute="trailing" secondItem="LUi-gb-BZI" secondAttribute="trailingMargin" id="GFa-o7-Flu"/>
                             <constraint firstItem="Qit-hF-Tz6" firstAttribute="leading" secondItem="LUi-gb-BZI" secondAttribute="leadingMargin" id="HR3-3g-4dx"/>
                             <constraint firstItem="iHq-BA-g36" firstAttribute="top" secondItem="IsU-MD-ukD" secondAttribute="bottom" constant="8" symbolic="YES" id="U1b-6u-dQa"/>
-                            <constraint firstItem="IsU-MD-ukD" firstAttribute="leading" secondItem="iHq-BA-g36" secondAttribute="leading" id="Ysz-30-gle"/>
+                            <constraint firstItem="IsU-MD-ukD" firstAttribute="leading" secondItem="iHq-BA-g36" secondAttribute="leading" constant="25" id="Ysz-30-gle"/>
                             <constraint firstItem="omo-FN-Bvo" firstAttribute="baseline" secondItem="IsU-MD-ukD" secondAttribute="baseline" id="Yzk-WI-GF6"/>
-                            <constraint firstItem="Qit-hF-Tz6" firstAttribute="top" secondItem="FSz-8D-ePm" secondAttribute="bottom" constant="8" symbolic="YES" id="fzg-Tg-yuh"/>
-                            <constraint firstItem="i0j-Rc-4kS" firstAttribute="top" secondItem="Law-5I-Cfb" secondAttribute="bottom" constant="8" id="npx-s4-3Y4"/>
+                            <constraint firstItem="Qit-hF-Tz6" firstAttribute="top" secondItem="FSz-8D-ePm" secondAttribute="bottom" constant="-56" id="fzg-Tg-yuh"/>
+                            <constraint firstItem="i0j-Rc-4kS" firstAttribute="top" secondItem="Law-5I-Cfb" secondAttribute="bottom" constant="72" id="npx-s4-3Y4"/>
                             <constraint firstItem="Law-5I-Cfb" firstAttribute="top" secondItem="iHq-BA-g36" secondAttribute="bottom" constant="75" id="peb-Oj-dCz"/>
                             <constraint firstItem="iHq-BA-g36" firstAttribute="leading" secondItem="Law-5I-Cfb" secondAttribute="leading" id="tso-xr-6ym"/>
                             <constraint firstItem="omo-FN-Bvo" firstAttribute="trailing" secondItem="iHq-BA-g36" secondAttribute="trailing" id="x2g-uN-zvC"/>
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Profile" id="4bf-NB-O0u">
-                            <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="CF9-wV-Jj4"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="bCu-8o-f9b"/>
                         <barButtonItem title="Sets" id="jUQ-px-5Nf">
                             <connections>
                                 <segue destination="eNQ-ye-QbU" kind="show" id="qX8-uw-rgY"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zpL-wT-L4s"/>
+                        <barButtonItem image="email.png" id="sXY-cA-P3t">
+                            <connections>
+                                <segue destination="sbC-lT-raX" kind="show" id="WcH-mu-5bL"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -261,7 +284,7 @@
         <!--Parts in Sets Table-->
         <scene sceneID="PAl-VY-DiW">
             <objects>
-                <tableViewController storyboardIdentifier="Parts In Sets" title="Parts in Sets Table" id="9fc-LV-DaH" customClass="SetsPartsListTableViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Parts In Sets" title="Parts in Sets Table" id="9fc-LV-DaH" customClass="SetsPartsListTableViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jEO-Vi-gqN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -305,14 +328,16 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Profile" id="qBa-62-qqw">
-                            <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="sZ4-ji-zhF"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Vp3-Mv-Wbb"/>
                         <barButtonItem title="Sets" id="5Hz-x5-Bz5">
                             <connections>
                                 <segue destination="eNQ-ye-QbU" kind="show" id="MeX-Al-k3X"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="1RB-ff-jhj"/>
+                        <barButtonItem image="email.png" id="WdY-ac-aho">
+                            <connections>
+                                <segue destination="sbC-lT-raX" kind="show" id="JZo-es-ReY"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -330,7 +355,7 @@
         <!--Part Detail View-->
         <scene sceneID="MWs-w8-HUy">
             <objects>
-                <viewController storyboardIdentifier="Part Detail" title="Part Detail View" id="Vsd-qG-JIG" customClass="PartDetailViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Part Detail" title="Part Detail View" id="Vsd-qG-JIG" customClass="PartDetailViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4O1-HT-Kob"/>
                         <viewControllerLayoutGuide type="bottom" id="5NN-vI-bO7"/>
@@ -339,7 +364,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocI-wn-tNu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocI-wn-tNu">
                                 <rect key="frame" x="20" y="271" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="A4N-Wl-GtK"/>
@@ -348,16 +373,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAN-1v-xZF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAN-1v-xZF">
                                 <rect key="frame" x="70" y="271" width="510" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TC2-Ey-fvz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TC2-Ey-fvz">
                                 <rect key="frame" x="20" y="8" width="560" height="255"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-cY-pYh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-cY-pYh">
                                 <rect key="frame" x="20" y="454" width="178" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ntk-X2-zBC"/>
@@ -368,7 +393,7 @@
                                     <segue destination="soB-Ug-CgK" kind="show" identifier="showPartVariants" id="RKn-dM-Yni"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vRO-W5-fWm" userLabel="Part Description">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vRO-W5-fWm" userLabel="Part Description">
                                 <rect key="frame" x="20" y="300" width="560" height="71"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -380,11 +405,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TC2-Ey-fvz" firstAttribute="top" secondItem="4O1-HT-Kob" secondAttribute="bottom" constant="8" symbolic="YES" id="27E-xI-fdw"/>
+                            <constraint firstItem="TC2-Ey-fvz" firstAttribute="top" secondItem="4O1-HT-Kob" secondAttribute="bottom" constant="-56" id="27E-xI-fdw"/>
                             <constraint firstItem="YeC-cY-pYh" firstAttribute="leading" secondItem="zhb-0o-RHs" secondAttribute="leadingMargin" id="5hg-uo-qiM"/>
-                            <constraint firstItem="5NN-vI-bO7" firstAttribute="top" secondItem="YeC-cY-pYh" secondAttribute="bottom" constant="8" id="9aI-0F-Qi7"/>
+                            <constraint firstItem="5NN-vI-bO7" firstAttribute="top" secondItem="YeC-cY-pYh" secondAttribute="bottom" constant="72" id="9aI-0F-Qi7"/>
                             <constraint firstItem="gAN-1v-xZF" firstAttribute="trailing" secondItem="zhb-0o-RHs" secondAttribute="trailingMargin" id="EdL-Cm-keH"/>
-                            <constraint firstItem="5NN-vI-bO7" firstAttribute="top" secondItem="vRO-W5-fWm" secondAttribute="bottom" constant="121" id="H8H-N7-SZR"/>
+                            <constraint firstItem="5NN-vI-bO7" firstAttribute="top" secondItem="vRO-W5-fWm" secondAttribute="bottom" constant="185" id="H8H-N7-SZR"/>
                             <constraint firstItem="TC2-Ey-fvz" firstAttribute="leading" secondItem="zhb-0o-RHs" secondAttribute="leadingMargin" id="Ivd-lo-W0z"/>
                             <constraint firstItem="vRO-W5-fWm" firstAttribute="top" secondItem="ocI-wn-tNu" secondAttribute="bottom" constant="8" symbolic="YES" id="NFy-2u-74f"/>
                             <constraint firstItem="gAN-1v-xZF" firstAttribute="firstBaseline" secondItem="ocI-wn-tNu" secondAttribute="firstBaseline" id="Ub6-Kf-ndf"/>
@@ -398,14 +423,16 @@
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Profile" id="qiE-Rv-emN">
-                            <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="0il-AA-ngC"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="pb9-hQ-r2z"/>
                         <barButtonItem title="Sets" id="NUt-yC-HUB">
                             <connections>
                                 <segue destination="eNQ-ye-QbU" kind="show" id="fMZ-dE-1MH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zLe-2U-SEP"/>
+                        <barButtonItem image="email.png" id="TSI-Hn-d9j">
+                            <connections>
+                                <segue destination="sbC-lT-raX" kind="show" id="dwj-HM-KtG"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -426,7 +453,7 @@
         <!--Part Variants-->
         <scene sceneID="fFU-BQ-UUC">
             <objects>
-                <tableViewController storyboardIdentifier="Part Variants" title="Part Variants" id="soB-Ug-CgK" customClass="PartVariantsTableViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Part Variants" title="Part Variants" id="soB-Ug-CgK" customClass="PartVariantsTableViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="awy-GP-blG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -463,14 +490,16 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Profile" id="DLT-yf-qdF">
-                            <connections>
-                                <segue destination="VgH-OT-pqx" kind="show" identifier="showProfile" id="uoF-4Y-aH6"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="PWe-mG-7Wm"/>
                         <barButtonItem title="Sets" id="Kx3-Lk-RD5">
                             <connections>
                                 <segue destination="eNQ-ye-QbU" kind="show" id="eLc-SV-mbT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="LJx-OD-xjH"/>
+                        <barButtonItem image="email.png" id="fqR-KS-jAx">
+                            <connections>
+                                <segue destination="sbC-lT-raX" kind="show" id="enZ-v3-cZC"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -486,7 +515,7 @@
         <!--Profile-->
         <scene sceneID="zOn-oH-gxX">
             <objects>
-                <viewController storyboardIdentifier="Profile" id="VgH-OT-pqx" customClass="ProfileViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" id="VgH-OT-pqx" customClass="ProfileViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E82-04-esY"/>
                         <viewControllerLayoutGuide type="bottom" id="WbX-Vu-fRa"/>
@@ -532,10 +561,16 @@
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Profile" id="Juj-8g-xiN"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="2iJ-XE-AhZ"/>
                         <barButtonItem title="Sets" id="um9-FU-CLn">
                             <connections>
                                 <segue destination="eNQ-ye-QbU" kind="show" id="Oe1-vx-8N0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="KdH-BY-HWD"/>
+                        <barButtonItem image="email.png" id="xEt-Qi-iB5">
+                            <connections>
+                                <segue destination="sbC-lT-raX" kind="show" id="2dq-ZP-iGS"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -561,10 +596,76 @@
             </objects>
             <point key="canvasLocation" x="1215" y="-1"/>
         </scene>
+        <!--Feedback-->
+        <scene sceneID="pGz-9O-DlQ">
+            <objects>
+                <viewController id="sbC-lT-raX" customClass="MailViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Ve-jo-R9o"/>
+                        <viewControllerLayoutGuide type="bottom" id="naA-va-LBI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S57-R7-qrH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We value your feedback. Please send us bugs, suggestions and more!" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8c-Bn-zKn">
+                                <rect key="frame" x="20" y="72" width="560" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="27a-XL-VEc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter your feedback here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4bK-Gw-arI">
+                                <rect key="frame" x="20" y="135" width="560" height="313"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4bK-Gw-arI" firstAttribute="trailing" secondItem="b8c-Bn-zKn" secondAttribute="trailing" id="99f-Yz-fVh"/>
+                            <constraint firstItem="4bK-Gw-arI" firstAttribute="leading" secondItem="S57-R7-qrH" secondAttribute="leadingMargin" id="dv3-av-eYU"/>
+                            <constraint firstItem="b8c-Bn-zKn" firstAttribute="leading" secondItem="4bK-Gw-arI" secondAttribute="leading" id="td6-3I-Igi"/>
+                            <constraint firstItem="4bK-Gw-arI" firstAttribute="top" secondItem="b8c-Bn-zKn" secondAttribute="bottom" constant="8" symbolic="YES" id="vZt-C7-My0"/>
+                            <constraint firstItem="b8c-Bn-zKn" firstAttribute="trailing" secondItem="S57-R7-qrH" secondAttribute="trailingMargin" id="wBE-DP-oyh"/>
+                            <constraint firstItem="b8c-Bn-zKn" firstAttribute="top" secondItem="6Ve-jo-R9o" secondAttribute="bottom" constant="8" symbolic="YES" id="wKJ-Mb-pIV"/>
+                            <constraint firstItem="naA-va-LBI" firstAttribute="top" secondItem="4bK-Gw-arI" secondAttribute="bottom" constant="108" id="yfD-1f-NKt"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="SrY-w0-hxX"/>
+                        <barButtonItem title="Sets" id="CSE-W4-0G7">
+                            <connections>
+                                <segue destination="eNQ-ye-QbU" kind="show" id="Tth-vg-6xW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="0P1-re-yux"/>
+                        <barButtonItem image="email.png" id="q6y-Hq-5MO"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Feedback" id="JMY-GE-4LN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="vh6-c5-oqY">
+                            <connections>
+                                <action selector="sendEmailButtonTapped:" destination="sbC-lT-raX" id="5by-MK-74r"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="emailContents" destination="4bK-Gw-arI" id="nGE-hz-wnN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B2F-Hb-3J9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="395" y="-1427"/>
+        </scene>
         <!--Navigation View Controller-->
         <scene sceneID="rQ2-fl-9hY">
             <objects>
-                <navigationController toolbarHidden="NO" id="kHi-Jo-724" customClass="NavigationViewController" customModule="Lego_Organizer" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="kHi-Jo-724" customClass="NavigationViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pFb-yF-Ugn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -584,9 +685,10 @@
     </scenes>
     <resources>
         <image name="default-placeholder-300x300.png" width="300" height="300"/>
+        <image name="email.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qX8-uw-rgY"/>
-        <segue reference="xZA-Sv-Sv9"/>
+        <segue reference="fMZ-dE-1MH"/>
+        <segue reference="dwj-HM-KtG"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,11 +25,8 @@ class SetsPartsListTableViewController: UITableViewController {
     
     
     func setupUI() {
-        self.title = "Lego Organizer"
+        self.title = "Brickly: Parts List"
         
-        if let profile = realm.objects(Profile).first {
-            self.profile = profile
-        }
         
         if profile?.userHash != "" {
             
