@@ -83,9 +83,7 @@ class LegoSetViewController: UIViewController {
                             
                             self.title = (self.legoSet?.set_id)! + " " + (self.legoSet?.descr)!
                             
-                            self.setNumberLabel.text = self.legoSet?.set_id
-                            
-                            self.setNameLabel.text = self.legoSet?.descr
+                            self.setNameLabel.text = (self.legoSet?.set_id)! + " " +  (self.legoSet?.descr)!
                             
                             let pieces:String = (self.legoSet?.pieces)!
                             

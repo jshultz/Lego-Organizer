@@ -54,11 +54,11 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
                                 let updatedItem = realm.objects(Set).filter(NSPredicate(format: "set_id = %@", "\(self.setId.text!)")).first
                                 // Break up the writing blocks into smaller portions
                                 // by starting a new transaction
-                                for idx1 in 0..<1 {
+                                for _ in 0..<1 {
                                     realm.beginWrite()
                                     
                                     // Add row via dictionary. Property order is ignored.
-                                    for idx2 in 0..<1 {
+                                    for _ in 0..<1 {
                                         
                                         let set_id:String = jsonObj[0]["set_id"].string!
                                         let descr:String = jsonObj[0]["descr"].string!

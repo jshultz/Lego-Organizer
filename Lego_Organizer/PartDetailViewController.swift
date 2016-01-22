@@ -16,9 +16,7 @@ class PartDetailViewController: UIViewController {
     var partId:JSON = nil
     
     let legoSet:Set? = nil
-    
-    @IBOutlet weak var partIdLabel: UILabel!
-    
+        
     @IBOutlet weak var partNameLabel: UILabel!
     
     @IBOutlet weak var partImage: UIImageView!
@@ -49,9 +47,11 @@ class PartDetailViewController: UIViewController {
                     if response.result.value != nil {
                         let jsonObj = JSON(response.result.value!)
                                                 
-                        self.partIdLabel.text = String(UTF8String: self.partId["part_id"].string!)!
+                        let number:String = String(UTF8String: self.partId["part_id"].string!)!
                         
-                        self.partNameLabel.text = String(UTF8String: self.partId["part_name"].string!)!
+                        let name:String = String(UTF8String: self.partId["part_name"].string!)!
+                        
+                        self.partNameLabel.text = "\(number) " + "\(name)"
                         
                         let imageView = self.partImage as UIImageView
                         
