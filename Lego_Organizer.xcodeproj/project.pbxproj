@@ -44,7 +44,7 @@
 		DE7722D41C1E15F7003D443F /* SetsPartsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetsPartsListTableViewController.swift; sourceTree = "<group>"; };
 		DE7722D61C1E2DA0003D443F /* PartDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartDetailViewController.swift; sourceTree = "<group>"; };
 		DE7A48DA1C3824FB00F57A35 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
-		DE908A9C1C15024600DE3F13 /* Brickly: Organizer for Lego.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brickly: Organizer for Lego.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE908A9C1C15024600DE3F13 /* Brickly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brickly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE908A9F1C15024600DE3F13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE908AA41C15024600DE3F13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE908AA61C15024600DE3F13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		DE908A9D1C15024600DE3F13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DE908A9C1C15024600DE3F13 /* Brickly: Organizer for Lego.app */,
+				DE908A9C1C15024600DE3F13 /* Brickly.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,9 +153,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DE908A9B1C15024600DE3F13 /* Brickly: Organizer for Lego */ = {
+		DE908A9B1C15024600DE3F13 /* Brickly */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DE908AAE1C15024600DE3F13 /* Build configuration list for PBXNativeTarget "Brickly: Organizer for Lego" */;
+			buildConfigurationList = DE908AAE1C15024600DE3F13 /* Build configuration list for PBXNativeTarget "Brickly" */;
 			buildPhases = (
 				F756B795BAA30647A886DD19 /* Check Pods Manifest.lock */,
 				DE908A981C15024600DE3F13 /* Sources */,
@@ -168,9 +168,9 @@
 			);
 			dependencies = (
 			);
-			name = "Brickly: Organizer for Lego";
+			name = Brickly;
 			productName = Lego_Organizer;
-			productReference = DE908A9C1C15024600DE3F13 /* Brickly: Organizer for Lego.app */;
+			productReference = DE908A9C1C15024600DE3F13 /* Brickly.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -202,7 +202,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DE908A9B1C15024600DE3F13 /* Brickly: Organizer for Lego */,
+				DE908A9B1C15024600DE3F13 /* Brickly */,
 			);
 		};
 /* End PBXProject section */
@@ -440,7 +440,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DE908AAE1C15024600DE3F13 /* Build configuration list for PBXNativeTarget "Brickly: Organizer for Lego" */ = {
+		DE908AAE1C15024600DE3F13 /* Build configuration list for PBXNativeTarget "Brickly" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DE908AAF1C15024600DE3F13 /* Debug */,
