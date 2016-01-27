@@ -8,7 +8,7 @@
         <!--Add Lego Set-->
         <scene sceneID="WVk-5B-s5F">
             <objects>
-                <viewController title="Add Lego Set" id="SiM-Sq-cSf" customClass="AddLegoSetViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add Lego Set" id="SiM-Sq-cSf" customClass="AddLegoSetViewController" customModule="Brickly" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kv1-py-yaB"/>
                         <viewControllerLayoutGuide type="bottom" id="Uwp-fx-5IX"/>
@@ -112,7 +112,7 @@
         <!--Lego Organizer-->
         <scene sceneID="cmv-05-M3G">
             <objects>
-                <tableViewController title="Lego Organizer" id="eNQ-ye-QbU" customClass="RootTableViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Lego Organizer" id="eNQ-ye-QbU" customClass="RootTableViewController" customModule="Brickly" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="s8B-PL-YB5">
                         <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,7 +186,7 @@
         <!--Lego Set View-->
         <scene sceneID="kQD-La-LzM">
             <objects>
-                <viewController storyboardIdentifier="Lego Set" title="Lego Set View" id="RDT-Gb-Ysd" customClass="LegoSetViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Lego Set" title="Lego Set View" id="RDT-Gb-Ysd" customClass="LegoSetViewController" customModule="Brickly" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FSz-8D-ePm"/>
                         <viewControllerLayoutGuide type="bottom" id="i0j-Rc-4kS"/>
@@ -278,7 +278,7 @@
         <!--Parts in Sets Table-->
         <scene sceneID="PAl-VY-DiW">
             <objects>
-                <tableViewController storyboardIdentifier="Parts In Sets" title="Parts in Sets Table" id="9fc-LV-DaH" customClass="SetsPartsListTableViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Parts In Sets" title="Parts in Sets Table" id="9fc-LV-DaH" customClass="SetsPartsListTableViewController" customModule="Brickly" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jEO-Vi-gqN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,7 +349,7 @@
         <!--Part Detail View-->
         <scene sceneID="MWs-w8-HUy">
             <objects>
-                <viewController storyboardIdentifier="Part Detail" title="Part Detail View" id="Vsd-qG-JIG" customClass="PartDetailViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Part Detail" title="Part Detail View" id="Vsd-qG-JIG" customClass="PartDetailViewController" customModule="Brickly" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4O1-HT-Kob"/>
                         <viewControllerLayoutGuide type="bottom" id="5NN-vI-bO7"/>
@@ -443,7 +443,7 @@
         <!--Part Variants-->
         <scene sceneID="fFU-BQ-UUC">
             <objects>
-                <tableViewController storyboardIdentifier="Part Variants" title="Part Variants" id="soB-Ug-CgK" customClass="PartVariantsTableViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Part Variants" title="Part Variants" id="soB-Ug-CgK" customClass="PartVariantsTableViewController" customModule="Brickly" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="awy-GP-blG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -505,7 +505,7 @@
         <!--Profile-->
         <scene sceneID="zOn-oH-gxX">
             <objects>
-                <viewController storyboardIdentifier="Profile" id="VgH-OT-pqx" customClass="ProfileViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" id="VgH-OT-pqx" customClass="ProfileViewController" customModule="Brickly" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E82-04-esY"/>
                         <viewControllerLayoutGuide type="bottom" id="WbX-Vu-fRa"/>
@@ -589,7 +589,7 @@
         <!--Feedback-->
         <scene sceneID="pGz-9O-DlQ">
             <objects>
-                <viewController id="sbC-lT-raX" customClass="MailViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sbC-lT-raX" customClass="MailViewController" customModule="Brickly" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Ve-jo-R9o"/>
                         <viewControllerLayoutGuide type="bottom" id="naA-va-LBI"/>
@@ -655,7 +655,7 @@
         <!--Navigation View Controller-->
         <scene sceneID="rQ2-fl-9hY">
             <objects>
-                <navigationController toolbarHidden="NO" id="kHi-Jo-724" customClass="NavigationViewController" customModule="Brickly__Organizer_for_Lego" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="kHi-Jo-724" customClass="NavigationViewController" customModule="Brickly" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pFb-yF-Ugn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -678,7 +678,7 @@
         <image name="email.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fMZ-dE-1MH"/>
-        <segue reference="dwj-HM-KtG"/>
+        <segue reference="53u-Hr-fTf"/>
+        <segue reference="aeh-kc-IRI"/>
     </inferredMetricsTieBreakers>
 </document>
