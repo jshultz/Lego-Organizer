@@ -9,6 +9,12 @@ class MailViewController: UIViewController, MFMailComposeViewControllerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailContents.layer.borderColor = UIColor.blackColor().CGColor;
+        emailContents.layer.borderWidth = 1.5
+        emailContents.layer.cornerRadius = 5.0
+        emailContents.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue:0, alpha: 1.0 ).CGColor;
+        
     }
     
     @IBAction func sendEmailButtonTapped(sender: AnyObject) {

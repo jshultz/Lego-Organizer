@@ -66,55 +66,33 @@ class LegoSetViewController: UIViewController {
         if profile?.userHash != "" {
             
             
-            Alamofire.request(.GET, "https://rebrickable.com/api/get_set_parts", parameters: [
-                "key": "9BUbjlV9IF",
-                "set" : (self.legoSet?.set_id)!,
-                "format": "json"]).validate().responseJSON { response in
-                switch response.result {
-                case .Success:
-                    if response.result.value != nil {
-                        var jsonObj = JSON(response.result.value!)
-                        
-                        if let data:JSON = jsonObj[0] {
-                            let total_parts:String = String(data["total_parts"])
-                            let total_missing:String = String(data["total_missing"])
-                            
-//                            self.title = String(UTF8String: self.setId["set_id"].string!)! + " " + String(UTF8String: self.setId["descr"].string!)!
-                            
-                            self.title = (self.legoSet?.set_id)! + " " + (self.legoSet?.descr)!
-                            
-                            self.setNameLabel.text = (self.legoSet?.set_id)! + " " +  (self.legoSet?.descr)!
-                            
-                            let pieces:String = (self.legoSet?.pieces)!
-                            
-                            let year:String = (self.legoSet?.year)!
-                            
-                            self.setDescriptionLabel.text = "Set consists of \(pieces) pieces and was first produced in \(year). There are \(total_parts) parts in this set and you have \(total_missing) missing."
-                            
-                            let imageView = self.setImage as UIImageView
-                                                        
-                            let img_url:String = (self.legoSet?.img_sm)!
-                            
-                            imageView.contentMode = .ScaleAspectFit
-                            
-                            if let checkedUrl = NSURL(string: "\(img_url)") {
-                                //            downloadImage(checkedUrl)
-                                imageView.contentMode = .ScaleAspectFit
-                                
-                                self.getDataFromUrl(checkedUrl) { (data, response, error)  in
-                                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                                        guard let data = data where error == nil else { return }
-//                                        print(response?.suggestedFilename ?? "")
-//                                        print("Download Finished")
-                                        imageView.image = UIImage(data: data)
-                                    }
-                                }
-                            }
-                        }
+            self.title = (self.legoSet?.set_id)! + " " + (self.legoSet?.descr)!
+            
+            self.setNameLabel.text = (self.legoSet?.set_id)! + " " +  (self.legoSet?.descr)!
+            
+            let pieces:String = (self.legoSet?.pieces)!
+            
+            let year:String = (self.legoSet?.year)!
+            
+            self.setDescriptionLabel.text = "Set consists of \(pieces) pieces and was first produced in \(year). "
+            
+            let imageView = self.setImage as UIImageView
+            
+            let img_url:String = (self.legoSet?.img_sm)!
+            
+            imageView.contentMode = .ScaleAspectFit
+            
+            if let checkedUrl = NSURL(string: "\(img_url)") {
+                //            downloadImage(checkedUrl)
+                imageView.contentMode = .ScaleAspectFit
+                
+                self.getDataFromUrl(checkedUrl) { (data, response, error)  in
+                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                        guard let data = data where error == nil else { return }
+                        //                                        print(response?.suggestedFilename ?? "")
+                        //                                        print("Download Finished")
+                        imageView.image = UIImage(data: data)
                     }
-                    
-                case .Failure(let error):
-                    print(error)
                 }
             }
             
@@ -133,9 +111,7 @@ class LegoSetViewController: UIViewController {
         } else if segue.identifier == "showSetsPartsList" {
             
             let PartsController:SetsPartsListTableViewController = segue.destinationViewController as! SetsPartsListTableViewController
-            
-            //            print("activeSet: ", self.datas[activeSet])
-            
+                        
             let setId = self.legoSet
             
             PartsController.legoSet = setId

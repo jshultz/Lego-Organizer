@@ -37,7 +37,7 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
         if self.setId.text != "" {
             Alamofire.request(.GET, "https://rebrickable.com/api/get_set", parameters: [
                 "key": "9BUbjlV9IF",
-                "set_id": self.setId.text!,
+                "set_id": self.setId.text! + "-1",
                 "format": "json"]).validate().responseJSON { response in
                     switch response.result {
                     case .Success:
