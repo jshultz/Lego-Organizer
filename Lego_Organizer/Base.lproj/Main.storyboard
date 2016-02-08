@@ -677,7 +677,7 @@
         <image name="email.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WcH-mu-5bL"/>
         <segue reference="qX8-uw-rgY"/>
+        <segue reference="1US-BF-S9d"/>
     </inferredMetricsTieBreakers>
 </document>

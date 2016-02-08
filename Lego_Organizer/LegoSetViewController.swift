@@ -61,41 +61,34 @@ class LegoSetViewController: UIViewController {
     
     func setupUI() {
         
-        self.title = "Brickly: Set View"
+        self.title = (self.legoSet?.set_id)! + " " + (self.legoSet?.descr)!
         
-        if profile?.userHash != "" {
-            
-            
-            self.title = (self.legoSet?.set_id)! + " " + (self.legoSet?.descr)!
-            
-            self.setNameLabel.text = (self.legoSet?.set_id)! + " " +  (self.legoSet?.descr)!
-            
-            let pieces:String = (self.legoSet?.pieces)!
-            
-            let year:String = (self.legoSet?.year)!
-            
-            self.setDescriptionLabel.text = "Set consists of \(pieces) pieces and was first produced in \(year). "
-            
-            let imageView = self.setImage as UIImageView
-            
-            let img_url:String = (self.legoSet?.img_sm)!
-            
+        self.setNameLabel.text = (self.legoSet?.set_id)! + " " +  (self.legoSet?.descr)!
+        
+        let pieces:String = (self.legoSet?.pieces)!
+        
+        let year:String = (self.legoSet?.year)!
+        
+        self.setDescriptionLabel.text = "Set consists of \(pieces) pieces and was first produced in \(year). "
+        
+        let imageView = self.setImage as UIImageView
+        
+        let img_url:String = (self.legoSet?.img_sm)!
+        
+        imageView.contentMode = .ScaleAspectFit
+        
+        if let checkedUrl = NSURL(string: "\(img_url)") {
+            //            downloadImage(checkedUrl)
             imageView.contentMode = .ScaleAspectFit
             
-            if let checkedUrl = NSURL(string: "\(img_url)") {
-                //            downloadImage(checkedUrl)
-                imageView.contentMode = .ScaleAspectFit
-                
-                self.getDataFromUrl(checkedUrl) { (data, response, error)  in
-                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                        guard let data = data where error == nil else { return }
-                        //                                        print(response?.suggestedFilename ?? "")
-                        //                                        print("Download Finished")
-                        imageView.image = UIImage(data: data)
-                    }
+            self.getDataFromUrl(checkedUrl) { (data, response, error)  in
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    guard let data = data where error == nil else { return }
+                    //                                        print(response?.suggestedFilename ?? "")
+                    //                                        print("Download Finished")
+                    imageView.image = UIImage(data: data)
                 }
             }
-            
         }
     }
 

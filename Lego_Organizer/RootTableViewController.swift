@@ -79,6 +79,8 @@ class RootTableViewController: UITableViewController {
         self.title = "Lego Organizer"
         self.tableView.reloadData()
         
+        self.tableView.backgroundColor = UIColor.orangeColor()
+        
     }
     
     func showAlert(errorTitle:String, errorMessage:String) {
@@ -102,6 +104,8 @@ class RootTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        cell.backgroundColor = colorForIndex(indexPath.row)
         
         let imageView = cell.viewWithTag(30) as! UIImageView
         
@@ -201,7 +205,13 @@ class RootTableViewController: UITableViewController {
             legoSetController.legoSet = legoSet 
         }
         
-        self.title = ""
+//        self.title = ""
+    }
+    
+    func colorForIndex(index: Int) -> UIColor {
+        let itemCount = userSets.count - 1
+        let color = (CGFloat(index) / CGFloat(itemCount)) * 0.6
+        return UIColor(red: 1.0, green: color, blue: 0.0, alpha: 1.0)
     }
     
     func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
