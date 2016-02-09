@@ -37,6 +37,9 @@ class PartVariantsTableViewController: UITableViewController {
     func setupUI() {
         self.title = "Part Variants"
         
+        self.tableView.backgroundColor = UIColor.orangeColor()
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
         if let profile = realm.objects(Profile).first {
             self.profile = profile
         }
@@ -88,6 +91,12 @@ class PartVariantsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
         let subTitle = cell.viewWithTag(20) as! UILabel
+        
+        let Title = cell.viewWithTag(10) as! UILabel
+                
+        Title.textColor = UIColor.whiteColor()
+        subTitle.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor(red: 0.7176, green: 0.1647, blue: 0.2, alpha: 1.0) /* #b72a33 */
         
         let object = datas[indexPath.row]
         

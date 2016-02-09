@@ -204,13 +204,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Law-5I-Cfb">
-                                <rect key="frame" x="20" y="506" width="130" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Law-5I-Cfb">
+                                <rect key="frame" x="35" y="504" width="101" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="I3F-tq-MOq"/>
                                     <constraint firstAttribute="width" constant="130" id="hA7-ka-3sA"/>
                                 </constraints>
-                                <state key="normal" title="Get Set Part List"/>
+                                <state key="normal" title="Get Part List"/>
                                 <connections>
                                     <segue destination="9fc-LV-DaH" kind="show" identifier="showSetsPartsList" id="ZXR-6U-Xat"/>
                                 </connections>
@@ -367,17 +367,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Loading..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vRO-W5-fWm" userLabel="Part Description">
-                                <rect key="frame" x="20" y="364" width="560" height="71"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="560" id="7aU-88-4QN"/>
-                                    <constraint firstAttribute="height" constant="71" id="PUe-nK-0ZQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TC2-Ey-fvz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-placeholder-300x300.png" translatesAutoresizingMaskIntoConstraints="NO" id="TC2-Ey-fvz">
                                 <rect key="frame" x="20" y="72" width="560" height="255"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="1Vr-QH-cxX"/>
@@ -390,11 +380,22 @@
                                     <constraint firstAttribute="width" constant="178" id="R2Z-9Y-yjH"/>
                                     <constraint firstAttribute="height" constant="30" id="dDZ-za-MN8"/>
                                 </constraints>
-                                <state key="normal" title="Get Part Variants"/>
+                                <state key="normal" title="Get Part Variants">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="soB-Ug-CgK" kind="show" identifier="showPartVariants" id="RKn-dM-Yni"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Loading..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vRO-W5-fWm" userLabel="Part Description">
+                                <rect key="frame" x="20" y="364" width="560" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="7aU-88-4QN"/>
+                                    <constraint firstAttribute="height" constant="71" id="PUe-nK-0ZQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -677,7 +678,7 @@
         <image name="email.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qX8-uw-rgY"/>
+        <segue reference="fMZ-dE-1MH"/>
         <segue reference="1US-BF-S9d"/>
     </inferredMetricsTieBreakers>
 </document>

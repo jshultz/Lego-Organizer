@@ -40,6 +40,12 @@ class PartDetailViewController: UIViewController {
         
         self.title = "Brickly: Part Detail View"
         
+        self.view?.backgroundColor = UIColor.orangeColor()
+        self.partNameLabel.textColor = UIColor.whiteColor()
+        self.partDescription.tintColor = UIColor.whiteColor()
+        self.partDescription.textColor = UIColor.whiteColor()
+
+        
         if self.partId != nil {
             Alamofire.request(.GET, "https://rebrickable.com/api/get_part", parameters: ["key": "9BUbjlV9IF", "part_id" : String(UTF8String: self.partId["part_id"].string!)!, "format": "json"]).validate().responseJSON { response in
                 switch response.result {

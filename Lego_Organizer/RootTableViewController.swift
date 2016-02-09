@@ -80,6 +80,8 @@ class RootTableViewController: UITableViewController {
         self.tableView.reloadData()
         
         self.tableView.backgroundColor = UIColor.orangeColor()
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+
         
     }
     
@@ -105,11 +107,15 @@ class RootTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
-        cell.backgroundColor = colorForIndex(indexPath.row)
-        
         let imageView = cell.viewWithTag(30) as! UIImageView
         
+        let Title = cell.viewWithTag(10) as! UILabel
+        
         let subTitle = cell.viewWithTag(20) as! UILabel
+        
+        Title.textColor = UIColor.whiteColor()
+        subTitle.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor(red: 0.7176, green: 0.1647, blue: 0.2, alpha: 1.0) /* #b72a33 */
         
         let object = array[indexPath.row]
         
@@ -132,6 +138,7 @@ class RootTableViewController: UITableViewController {
                 }
             }
         }
+
         subTitle.text = object.descr
 //        print("object: ", object)
         

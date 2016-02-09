@@ -27,6 +27,10 @@ class SetsPartsListTableViewController: UITableViewController {
     func setupUI() {
         self.title = "Brickly: Parts List"
         
+        self.tableView.backgroundColor = UIColor.orangeColor()
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+
+        
         
         if profile?.userHash != "" {
             
@@ -98,7 +102,13 @@ class SetsPartsListTableViewController: UITableViewController {
         
         let imageView = cell.viewWithTag(30) as! UIImageView
         
+        let Title = cell.viewWithTag(10) as! UILabel
+        
         let subTitle = cell.viewWithTag(20) as! UILabel
+        
+        Title.textColor = UIColor.whiteColor()
+        subTitle.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor(red: 0.7176, green: 0.1647, blue: 0.2, alpha: 1.0) /* #b72a33 */
         
         let object = datas[indexPath.row]
         

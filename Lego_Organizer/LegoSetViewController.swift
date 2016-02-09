@@ -61,6 +61,11 @@ class LegoSetViewController: UIViewController {
     
     func setupUI() {
         
+        self.view?.backgroundColor = UIColor.orangeColor()
+        self.setNameLabel.textColor = UIColor.whiteColor()
+        self.setDescriptionLabel.textColor = UIColor.whiteColor()
+        
+        
         self.title = (self.legoSet?.set_id)! + " " + (self.legoSet?.descr)!
         
         self.setNameLabel.text = (self.legoSet?.set_id)! + " " +  (self.legoSet?.descr)!
@@ -84,8 +89,7 @@ class LegoSetViewController: UIViewController {
             self.getDataFromUrl(checkedUrl) { (data, response, error)  in
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     guard let data = data where error == nil else { return }
-                    //                                        print(response?.suggestedFilename ?? "")
-                    //                                        print("Download Finished")
+
                     imageView.image = UIImage(data: data)
                 }
             }
