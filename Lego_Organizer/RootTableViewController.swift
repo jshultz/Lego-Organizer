@@ -17,7 +17,7 @@ class RootTableViewController: UITableViewController {
     
     var profile:Profile? = nil
     var set:Set? = nil
-    var array = try! Realm().objects(Set)
+    var array = try! Realm().objects(Set).sorted("descr", ascending: true)
     
     var apiKey:String = ""
     
@@ -71,13 +71,12 @@ class RootTableViewController: UITableViewController {
         }
     }
     
-    func getUserSets(userHash:String, completionHandler: (JSON?) -> ()) -> () {
-        
+    @IBAction func showSortOptions(sender: AnyObject) {
+        showSorting("Sort Sets", errorMessage: "Sort Sets by either Name or Number.")
     }
     
     func setupUI() {
         self.title = "Lego Organizer"
-        self.tableView.reloadData()
         
         self.tableView.backgroundColor = UIColor.orangeColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -103,6 +102,28 @@ class RootTableViewController: UITableViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    func showSorting(errorTitle:String, errorMessage:String) {
+        let alert = UIAlertController(title: "\(errorTitle)", message: "\(errorMessage)", preferredStyle: .Alert) // 1
+        let firstAction = UIAlertAction(title: "Sort by Set Number", style: .Default) { (alert: UIAlertAction!) -> Void in
+            NSLog("Sorting by Number")
+            
+            self.array = try! Realm().objects(Set).sorted("set_id", ascending: true)
+            self.tableView.reloadData()
+            
+        } // 2
+        alert.addAction(firstAction) // 4
+        
+        let secondAction = UIAlertAction(title: "Sort by Set Name", style: .Default) { (alert: UIAlertAction!) -> Void in
+            NSLog("Sorting by Name")
+            self.array = try! Realm().objects(Set).sorted("descr", ascending: true)
+            self.tableView.reloadData()
+        } // 3
+        
+        alert.addAction(secondAction) // 5
+        
+        presentViewController(alert, animated: true, completion:nil) // 6
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
@@ -120,27 +141,22 @@ class RootTableViewController: UITableViewController {
         let object = array[indexPath.row]
         
         let img_url = object.img_sm
-        //            print("userName", userName)
         cell.textLabel?.text = object.set_id
         
         imageView.contentMode = .ScaleAspectFit
         
         if let checkedUrl = NSURL(string: "\(img_url)") {
-//            downloadImage(checkedUrl)
             imageView.contentMode = .ScaleAspectFit
             
             getDataFromUrl(checkedUrl) { (data, response, error)  in
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     guard let data = data where error == nil else { return }
-//                    print(response?.suggestedFilename ?? "")
-//                    print("Download Finished")
                     imageView.image = UIImage(data: data)
                 }
             }
         }
 
         subTitle.text = object.descr
-//        print("object: ", object)
         
         return cell
     }

@@ -27,6 +27,7 @@
 		DEB62B061C3F5AA500899E0A /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB62B031C3F5AA500899E0A /* home.png */; };
 		DEB62B071C3F5AA500899E0A /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB62B041C3F5AA500899E0A /* profile.png */; };
 		DEB62B091C3F5ADF00899E0A /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB62B081C3F5ADF00899E0A /* EmailViewController.swift */; };
+		DEDE004C1C6E0A54001E1129 /* sorting.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDE004B1C6E0A54001E1129 /* sorting.png */; };
 		DEFBA8F71C1E5CD900CD4FB3 /* AddLegoSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFBA8F61C1E5CD900CD4FB3 /* AddLegoSetViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		DEB62B031C3F5AA500899E0A /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		DEB62B041C3F5AA500899E0A /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		DEB62B081C3F5ADF00899E0A /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		DEDE004B1C6E0A54001E1129 /* sorting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sorting.png; sourceTree = "<group>"; };
 		DEFBA8F61C1E5CD900CD4FB3 /* AddLegoSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLegoSetViewController.swift; sourceTree = "<group>"; };
 		FE0DCB44D9B102669C5DACC3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -92,6 +94,7 @@
 		DE7722CF1C1DC741003D443F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DEDE004B1C6E0A54001E1129 /* sorting.png */,
 				DE7722D01C1DC75D003D443F /* default-placeholder-300x300.png */,
 				DEB62B021C3F5AA500899E0A /* email.png */,
 				DEB62B031C3F5AA500899E0A /* home.png */,
@@ -219,6 +222,7 @@
 				DEB62B051C3F5AA500899E0A /* email.png in Resources */,
 				DE908AA51C15024600DE3F13 /* Main.storyboard in Resources */,
 				DEB62B071C3F5AA500899E0A /* profile.png in Resources */,
+				DEDE004C1C6E0A54001E1129 /* sorting.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,6 +34,8 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func saveSet(sender: AnyObject) {
         
+        
+        
         if self.setId.text != "" {
             Alamofire.request(.GET, "https://rebrickable.com/api/get_set", parameters: [
                 "key": "9BUbjlV9IF",
@@ -44,14 +46,14 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
                         if response.result.value != nil {
                             let jsonObj = JSON(response.result.value!)
                             
-                            
-                            
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 
                                 // Get realm and table instances for this thread
                                 let realm = try! Realm()
                                 
-                                let updatedItem = realm.objects(Set).filter(NSPredicate(format: "set_id = %@", "\(self.setId.text!)")).first
+                                let set_id:String = jsonObj[0]["set_id"].string!
+                                
+                                let updatedItem = realm.objects(Set).filter(NSPredicate(format: "set_id = %@", "\(set_id)")).first
                                 // Break up the writing blocks into smaller portions
                                 // by starting a new transaction
                                 for _ in 0..<1 {

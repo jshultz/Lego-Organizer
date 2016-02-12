@@ -39,8 +39,6 @@ class LegoSetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print("setId: ", self.setId)
-        
         // Do any additional setup after loading the view.
     }
 
@@ -83,7 +81,7 @@ class LegoSetViewController: UIViewController {
         imageView.contentMode = .ScaleAspectFit
         
         if let checkedUrl = NSURL(string: "\(img_url)") {
-            //            downloadImage(checkedUrl)
+//            downloadImage(checkedUrl)
             imageView.contentMode = .ScaleAspectFit
             
             self.getDataFromUrl(checkedUrl) { (data, response, error)  in

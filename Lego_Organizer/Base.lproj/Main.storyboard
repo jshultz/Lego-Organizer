@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Add Lego Set-->
@@ -165,11 +166,18 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Brickly: Organizer and Tracker for LEGO®" id="W5D-0j-JQ2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lWL-E2-0RR">
-                            <connections>
-                                <segue destination="SiM-Sq-cSf" kind="show" identifier="addLegoSet" id="6OE-4R-UIb"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="lWL-E2-0RR">
+                                <connections>
+                                    <segue destination="SiM-Sq-cSf" kind="show" identifier="addLegoSet" id="6OE-4R-UIb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="sorting.png" id="mt2-kL-Bmw">
+                                <connections>
+                                    <action selector="showSortOptions:" destination="eNQ-ye-QbU" id="PIM-J3-GfE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
@@ -676,9 +684,10 @@
     <resources>
         <image name="default-placeholder-300x300.png" width="300" height="300"/>
         <image name="email.png" width="32" height="32"/>
+        <image name="sorting.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fMZ-dE-1MH"/>
         <segue reference="1US-BF-S9d"/>
+        <segue reference="53u-Hr-fTf"/>
     </inferredMetricsTieBreakers>
 </document>
