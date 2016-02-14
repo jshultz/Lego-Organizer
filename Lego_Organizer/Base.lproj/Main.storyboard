@@ -688,7 +688,7 @@
         <image name="sorting.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Tth-vg-6xW"/>
         <segue reference="1US-BF-S9d"/>
-        <segue reference="53u-Hr-fTf"/>
     </inferredMetricsTieBreakers>
 </document>
