@@ -48,6 +48,14 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
                             
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 
+                                let img_sm_file_name = "\(self.randomStringWithLength(10)).jpg"
+                                let img_tn_file_name = "\(self.randomStringWithLength(10)).jpg"
+                                                                
+                                let getImageSM =  UIImage(data: NSData(contentsOfURL: NSURL(string:  (jsonObj[0]["img_sm"].string!))!)!)
+                                let getImageTN =  UIImage(data: NSData(contentsOfURL: NSURL(string:  (jsonObj[0]["img_tn"].string!))!)!)
+                                UIImageJPEGRepresentation(getImageSM!, 100)!.writeToFile(self.fileInDocumentsDirectory("\(img_sm_file_name)"), atomically: true)
+                                UIImageJPEGRepresentation(getImageTN!, 100)!.writeToFile(self.fileInDocumentsDirectory("\(img_tn_file_name)"), atomically: true)
+                                
                                 // Get realm and table instances for this thread
                                 let realm = try! Realm()
                                 
@@ -64,8 +72,8 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
                                         
                                         let set_id:String = jsonObj[0]["set_id"].string!
                                         let descr:String = jsonObj[0]["descr"].string!
-                                        let img_sm:String = jsonObj[0]["img_sm"].string!
-                                        let img_tn:String = jsonObj[0]["img_tn"].string!
+                                        let img_sm:String = img_sm_file_name
+                                        let img_tn:String = img_tn_file_name
                                         let pieces:String = jsonObj[0]["pieces"].string!
                                         let qty:String = self.setQuantity.text!
                                         let theme:String = jsonObj[0]["theme"].string!
@@ -111,6 +119,48 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     }
             }
         }
+        
+    }
+    
+    func fileInDocumentsDirectory(filename: String) -> String {
+        return getDocumentsDirectory().stringByAppendingPathComponent(filename)
+    }
+    
+    func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+            completion(data: data, response: response, error: error)
+            }.resume()
+    }
+    
+    
+    func getDocumentsDirectory() -> NSString {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0]
+        
+        return documentsDirectory
+    }
+    
+    func randomStringWithLength (len : Int) -> NSString {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        
+        let randomString : NSMutableString = NSMutableString(capacity: len)
+        
+        for (var i=0; i < len; i++){
+            let length = UInt32 (letters.length)
+            let rand = arc4random_uniform(length)
+            randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
+        return randomString
+    }
+    
+    func saveImage (image: UIImage, path: String ) -> String{
+        
+        let pngImageData = UIImagePNGRepresentation(image)
+        //let jpgImageData = UIImageJPEGRepresentation(image, 1.0)   // if you want to save as JPEG
+        let result = pngImageData!.writeToFile(path, atomically: true)
+        return path
         
     }
     

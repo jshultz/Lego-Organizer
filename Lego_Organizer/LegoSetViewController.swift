@@ -57,7 +57,31 @@ class LegoSetViewController: UIViewController {
             }.resume()
     }
     
+    func fileInDocumentsDirectory(filename: String) -> String {
+        
+        let fileURL = getDocumentsURL().URLByAppendingPathComponent(filename)
+        return fileURL.path!
+        
+    }
+    
+    func getDocumentsURL() -> NSURL {
+        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        return documentsURL
+    }
+    
+    func loadImageFromPath(path: String) -> UIImage? {
+        var image = UIImage()
+        let data = NSData(contentsOfFile: path)
+        if (data != nil) {
+            image = UIImage(data: data!)!
+        } else {
+        }
+        return image
+    }
+    
     func setupUI() {
+        
+        print("self.legoSet? : ", self.legoSet)
         
         self.view?.backgroundColor = UIColor.orangeColor()
         self.setNameLabel.textColor = UIColor.whiteColor()
@@ -80,18 +104,37 @@ class LegoSetViewController: UIViewController {
         
         imageView.contentMode = .ScaleAspectFit
         
-        if let checkedUrl = NSURL(string: "\(img_url)") {
-//            downloadImage(checkedUrl)
-            imageView.contentMode = .ScaleAspectFit
-            
-            self.getDataFromUrl(checkedUrl) { (data, response, error)  in
-                dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    guard let data = data where error == nil else { return }
+        let myImageName = self.legoSet?.img_sm
+        let imagePath = fileInDocumentsDirectory(myImageName!)
+        
+        let checkImage = NSFileManager.defaultManager()
 
-                    imageView.image = UIImage(data: data)
+        
+        if (checkImage.fileExistsAtPath(imagePath)) {
+            
+            if let _ = loadImageFromPath(imagePath) {
+                if self.legoSet?.img_sm != "" {
+                    imageView.image = loadImageFromPath(imagePath)
+                }
+            } else { print("some error message 2") }
+            
+            
+        } else {
+            let img_url:String = (self.legoSet?.img_sm)!
+            
+            if let checkedUrl = NSURL(string: "\(img_url)") {
+                imageView.contentMode = .ScaleAspectFit
+                
+                self.getDataFromUrl(checkedUrl) { (data, response, error)  in
+                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                        guard let data = data where error == nil else { return }
+                        
+                        imageView.image = UIImage(data: data)
+                    }
                 }
             }
         }
+        
     }
 
 

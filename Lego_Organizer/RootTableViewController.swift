@@ -31,7 +31,6 @@ class RootTableViewController: UITableViewController {
     var notificationToken: NotificationToken?
     
     @IBOutlet var legoTable: UITableView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +79,6 @@ class RootTableViewController: UITableViewController {
         
         self.tableView.backgroundColor = UIColor.orangeColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-
         
     }
     
@@ -104,59 +102,79 @@ class RootTableViewController: UITableViewController {
     
     func showSorting(errorTitle:String, errorMessage:String) {
         let alert = UIAlertController(title: "\(errorTitle)", message: "\(errorMessage)", preferredStyle: .Alert) // 1
-        let firstAction = UIAlertAction(title: "Sort by Set Number", style: .Default) { (alert: UIAlertAction!) -> Void in
+        
+        let firstAction = UIAlertAction(title: "Sort by Set Name", style: .Default) { (alert: UIAlertAction!) -> Void in
+            NSLog("Sorting by Name")
+            self.array = try! Realm().objects(Set).sorted("descr", ascending: true)
+            self.tableView.reloadData()
+        } // 3
+        
+        alert.addAction(firstAction) // 5
+        
+        let secondAction = UIAlertAction(title: "Sort by Set Number", style: .Default) { (alert: UIAlertAction!) -> Void in
             NSLog("Sorting by Number")
             
             self.array = try! Realm().objects(Set).sorted("set_id", ascending: true)
             self.tableView.reloadData()
             
         } // 2
-        alert.addAction(firstAction) // 4
+        alert.addAction(secondAction) // 4
         
-        let secondAction = UIAlertAction(title: "Sort by Set Name", style: .Default) { (alert: UIAlertAction!) -> Void in
-            NSLog("Sorting by Name")
-            self.array = try! Realm().objects(Set).sorted("descr", ascending: true)
-            self.tableView.reloadData()
-        } // 3
         
-        alert.addAction(secondAction) // 5
         
         presentViewController(alert, animated: true, completion:nil) // 6
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        print("array[indexPath.row] : ", array[indexPath.row])
         
-        let imageView = cell.viewWithTag(30) as! UIImageView
+        let cellIdentifier = "LegoSetTableViewCell"
         
-        let Title = cell.viewWithTag(10) as! UILabel
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! LegoSetTableViewCell
         
-        let subTitle = cell.viewWithTag(20) as! UILabel
-        
-        Title.textColor = UIColor.whiteColor()
-        subTitle.textColor = UIColor.whiteColor()
+        cell.titleLabel.textColor = UIColor.whiteColor()
+        cell.descriptionLabel.textColor = UIColor.whiteColor()
         cell.backgroundColor = UIColor(red: 0.7176, green: 0.1647, blue: 0.2, alpha: 1.0) /* #b72a33 */
         
         let object = array[indexPath.row]
         
-        let img_url = object.img_sm
-        cell.textLabel?.text = object.set_id
+        cell.titleLabel.text = object.set_id
         
-        imageView.contentMode = .ScaleAspectFit
+//        cell.textLabel?.text = object.set_id
         
-        if let checkedUrl = NSURL(string: "\(img_url)") {
-            imageView.contentMode = .ScaleAspectFit
+        cell.photoImageView.contentMode = .ScaleAspectFit
+        
+//        cell.photoImageView.frame = CGRect(x: 10, y:10, width: 40, height: 40)
+        
+        let myImageName = object.img_tn
+        let imagePath = fileInDocumentsDirectory(myImageName)
+        
+        let checkImage = NSFileManager.defaultManager()
+        
+        if (checkImage.fileExistsAtPath(imagePath)) {
             
-            getDataFromUrl(checkedUrl) { (data, response, error)  in
-                dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    guard let data = data where error == nil else { return }
-                    imageView.image = UIImage(data: data)
+            if let _ = loadImageFromPath(imagePath) {
+                if object.img_tn != "" {
+                    cell.photoImageView.image = loadImageFromPath(imagePath)
+                }
+            } else { print("some error message 2") }
+            
+            
+        } else {
+            if let checkedUrl = NSURL(string: "\(object.img_tn)") {
+                cell.photoImageView.contentMode = .ScaleAspectFit
+            
+                getDataFromUrl(checkedUrl) { (data, response, error)  in
+                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                        guard let data = data where error == nil else { return }
+                        cell.photoImageView.image = UIImage(data: data)
+                    }
                 }
             }
         }
 
-        subTitle.text = object.descr
+        cell.descriptionLabel.text = object.descr
         
         return cell
     }
@@ -241,6 +259,28 @@ class RootTableViewController: UITableViewController {
         NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
             completion(data: data, response: response, error: error)
             }.resume()
+    }
+    
+    func fileInDocumentsDirectory(filename: String) -> String {
+        
+        let fileURL = getDocumentsURL().URLByAppendingPathComponent(filename)
+        return fileURL.path!
+        
+    }
+    
+    func getDocumentsURL() -> NSURL {
+        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        return documentsURL
+    }
+    
+    func loadImageFromPath(path: String) -> UIImage? {
+        var image = UIImage()
+        let data = NSData(contentsOfFile: path)
+        if (data != nil) {
+            image = UIImage(data: data!)!
+        } else {
+        }
+        return image
     }
     
     func downloadImage(url: NSURL){

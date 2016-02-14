@@ -28,6 +28,7 @@
 		DEB62B071C3F5AA500899E0A /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB62B041C3F5AA500899E0A /* profile.png */; };
 		DEB62B091C3F5ADF00899E0A /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB62B081C3F5ADF00899E0A /* EmailViewController.swift */; };
 		DEDE004C1C6E0A54001E1129 /* sorting.png in Resources */ = {isa = PBXBuildFile; fileRef = DEDE004B1C6E0A54001E1129 /* sorting.png */; };
+		DEE554BC1C6E953400CD4502 /* LegoSetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE554BB1C6E953400CD4502 /* LegoSetTableViewCell.swift */; };
 		DEFBA8F71C1E5CD900CD4FB3 /* AddLegoSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFBA8F61C1E5CD900CD4FB3 /* AddLegoSetViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		DEB62B041C3F5AA500899E0A /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		DEB62B081C3F5ADF00899E0A /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		DEDE004B1C6E0A54001E1129 /* sorting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sorting.png; sourceTree = "<group>"; };
+		DEE554BB1C6E953400CD4502 /* LegoSetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegoSetTableViewCell.swift; sourceTree = "<group>"; };
 		DEFBA8F61C1E5CD900CD4FB3 /* AddLegoSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLegoSetViewController.swift; sourceTree = "<group>"; };
 		FE0DCB44D9B102669C5DACC3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -126,21 +128,22 @@
 			children = (
 				DE7722CF1C1DC741003D443F /* Images */,
 				DE2586D71C154250001957DB /* Models */,
-				DE908A9F1C15024600DE3F13 /* AppDelegate.swift */,
-				DE908AA31C15024600DE3F13 /* Main.storyboard */,
-				DEB62B081C3F5ADF00899E0A /* EmailViewController.swift */,
 				DEFBA8F61C1E5CD900CD4FB3 /* AddLegoSetViewController.swift */,
-				DE7722D61C1E2DA0003D443F /* PartDetailViewController.swift */,
-				DE7722D41C1E15F7003D443F /* SetsPartsListTableViewController.swift */,
-				DE7722D21C1DE6D9003D443F /* LegoSetViewController.swift */,
-				DE4954061C1537D50009775B /* ProfileViewController.swift */,
+				DE908A9F1C15024600DE3F13 /* AppDelegate.swift */,
 				DE908AA61C15024600DE3F13 /* Assets.xcassets */,
-				DE908AA81C15024600DE3F13 /* LaunchScreen.storyboard */,
+				DEB62B081C3F5ADF00899E0A /* EmailViewController.swift */,
 				DE908AAB1C15024600DE3F13 /* Info.plist */,
-				DE4954041C152C050009775B /* RootTableViewController.swift */,
-				DE2AD8741C2B22DC00F969D3 /* PartVariantsTableViewController.swift */,
-				DE25D7B81C331185007B00C3 /* NavigationViewController.swift */,
+				DE908AA81C15024600DE3F13 /* LaunchScreen.storyboard */,
+				DE7722D21C1DE6D9003D443F /* LegoSetViewController.swift */,
+				DEE554BB1C6E953400CD4502 /* LegoSetTableViewCell.swift */,
+				DE908AA31C15024600DE3F13 /* Main.storyboard */,
 				DE5ABD011C51AA4000E3A162 /* MyImageBlob.swift */,
+				DE25D7B81C331185007B00C3 /* NavigationViewController.swift */,
+				DE7722D61C1E2DA0003D443F /* PartDetailViewController.swift */,
+				DE2AD8741C2B22DC00F969D3 /* PartVariantsTableViewController.swift */,
+				DE4954061C1537D50009775B /* ProfileViewController.swift */,
+				DE4954041C152C050009775B /* RootTableViewController.swift */,
+				DE7722D41C1E15F7003D443F /* SetsPartsListTableViewController.swift */,
 			);
 			path = Lego_Organizer;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				DEB62B091C3F5ADF00899E0A /* EmailViewController.swift in Sources */,
 				DE4954051C152C050009775B /* RootTableViewController.swift in Sources */,
 				DE25D7B91C331185007B00C3 /* NavigationViewController.swift in Sources */,
+				DEE554BC1C6E953400CD4502 /* LegoSetTableViewCell.swift in Sources */,
 				DE7A48DB1C3824FB00F57A35 /* Set.swift in Sources */,
 				DE7722D51C1E15F7003D443F /* SetsPartsListTableViewController.swift in Sources */,
 			);
