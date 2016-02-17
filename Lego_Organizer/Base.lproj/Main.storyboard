@@ -75,6 +75,11 @@
                         </constraints>
                     </view>
                     <toolbarItems>
+                        <barButtonItem image="search.png" id="dEP-fn-Iya" userLabel="Search">
+                            <connections>
+                                <segue destination="neD-aS-p3z" kind="show" id="5iA-Qa-IV9"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="BcS-pZ-ee0"/>
                         <barButtonItem title="Sets" id="8h0-i3-NsT">
                             <connections>
@@ -82,7 +87,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="vcL-FZ-31w"/>
-                        <barButtonItem image="email.png" id="rHa-Af-mMg">
+                        <barButtonItem image="email.png" id="rHa-Af-mMg" userLabel="Feedback">
                             <connections>
                                 <segue destination="sbC-lT-raX" kind="show" id="aeh-kc-IRI"/>
                             </connections>
@@ -122,13 +127,13 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R8Z-MO-Qkc" id="FuB-0N-c1k">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaU-3m-0wH">
                                             <rect key="frame" x="77" y="4" width="81" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" tag="30" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default-placeholder-300x300.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gsh-Gq-VZ4">
@@ -137,7 +142,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfs-JM-YKN">
                                             <rect key="frame" x="77" y="23" width="515" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -157,10 +162,15 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem image="search.png" id="P8f-KX-XEY" userLabel="Search">
+                            <connections>
+                                <segue destination="neD-aS-p3z" kind="show" id="gNj-9v-uaZ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="huU-Lt-9o9"/>
                         <barButtonItem title="Sets" id="emK-9r-8HP"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bYm-1D-rjH"/>
-                        <barButtonItem image="email.png" id="s2s-7p-jb9">
+                        <barButtonItem image="email.png" id="s2s-7p-jb9" userLabel="Feedback">
                             <connections>
                                 <segue destination="sbC-lT-raX" kind="show" id="1US-BF-S9d"/>
                             </connections>
@@ -254,6 +264,11 @@
                         </constraints>
                     </view>
                     <toolbarItems>
+                        <barButtonItem image="search.png" id="HUO-wJ-q2m" userLabel="Search">
+                            <connections>
+                                <segue destination="neD-aS-p3z" kind="show" id="KtE-mf-uHZ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bCu-8o-f9b"/>
                         <barButtonItem title="Sets" id="jUQ-px-5Nf">
                             <connections>
@@ -261,7 +276,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="zpL-wT-L4s"/>
-                        <barButtonItem image="email.png" id="sXY-cA-P3t">
+                        <barButtonItem image="email.png" id="sXY-cA-P3t" userLabel="Feedback">
                             <connections>
                                 <segue destination="sbC-lT-raX" kind="show" id="WcH-mu-5bL"/>
                             </connections>
@@ -330,6 +345,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem image="search.png" id="0q8-Bq-dGn" userLabel="Search">
+                            <connections>
+                                <segue destination="neD-aS-p3z" kind="show" id="pWh-cq-aVe"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Vp3-Mv-Wbb"/>
                         <barButtonItem title="Sets" id="5Hz-x5-Bz5">
                             <connections>
@@ -337,7 +357,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="1RB-ff-jhj"/>
-                        <barButtonItem image="email.png" id="WdY-ac-aho">
+                        <barButtonItem image="email.png" id="WdY-ac-aho" userLabel="Feedback">
                             <connections>
                                 <segue destination="sbC-lT-raX" kind="show" id="JZo-es-ReY"/>
                             </connections>
@@ -423,6 +443,11 @@
                         </constraints>
                     </view>
                     <toolbarItems>
+                        <barButtonItem image="search.png" id="lAC-hP-CbP" userLabel="Search">
+                            <connections>
+                                <segue destination="neD-aS-p3z" kind="show" id="qUN-lp-bwU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="pb9-hQ-r2z"/>
                         <barButtonItem title="Sets" id="NUt-yC-HUB">
                             <connections>
@@ -430,7 +455,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="zLe-2U-SEP"/>
-                        <barButtonItem image="email.png" id="TSI-Hn-d9j">
+                        <barButtonItem image="email.png" id="TSI-Hn-d9j" userLabel="Feedback">
                             <connections>
                                 <segue destination="sbC-lT-raX" kind="show" id="dwj-HM-KtG"/>
                             </connections>
@@ -489,6 +514,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem image="search.png" id="Sjl-PD-i9V" userLabel="Search">
+                            <connections>
+                                <segue destination="neD-aS-p3z" kind="show" id="WNB-jK-9cb"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="PWe-mG-7Wm"/>
                         <barButtonItem title="Sets" id="Kx3-Lk-RD5">
                             <connections>
@@ -496,7 +526,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="LJx-OD-xjH"/>
-                        <barButtonItem image="email.png" id="fqR-KS-jAx">
+                        <barButtonItem image="email.png" id="fqR-KS-jAx" userLabel="Feedback">
                             <connections>
                                 <segue destination="sbC-lT-raX" kind="show" id="enZ-v3-cZC"/>
                             </connections>
@@ -560,6 +590,11 @@
                         </constraints>
                     </view>
                     <toolbarItems>
+                        <barButtonItem image="search.png" id="PjK-TP-4h0" userLabel="Search">
+                            <connections>
+                                <segue destination="neD-aS-p3z" kind="show" id="gcm-Xy-jOE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="2iJ-XE-AhZ"/>
                         <barButtonItem title="Sets" id="um9-FU-CLn">
                             <connections>
@@ -594,6 +629,148 @@
                 <barButtonItem title="Sets" id="Xtg-CJ-WcC"/>
             </objects>
             <point key="canvasLocation" x="1215" y="-1"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="ktH-Sd-R9L">
+            <objects>
+                <viewController storyboardIdentifier="Search" title="Search" id="neD-aS-p3z" customClass="SearchViewController" customModule="Brickly" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LDU-V1-v0s"/>
+                        <viewControllerLayoutGuide type="bottom" id="PNj-cH-6Ic"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6YQ-G6-VHu">
+                        <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1QM-Jo-dLp" userLabel="resultsTable">
+                                <rect key="frame" x="20" y="52" width="560" height="440"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="440" id="d56-hR-EWC"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ssC-7c-tC5" customClass="ResultTableViewCell" customModule="Brickly" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ssC-7c-tC5" id="hvx-bE-3eg">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-placeholder-300x300.png" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-FA-Gx3">
+                                                    <rect key="frame" x="8" y="0.0" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="gBE-Vi-ccZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uy-wM-xa8">
+                                                    <rect key="frame" x="66" y="22" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uup-cb-rbF">
+                                                    <rect key="frame" x="66" y="0.0" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="OzB-v1-IMh"/>
+                                                        <constraint firstAttribute="width" constant="42" id="XUM-Dd-QHn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aPb-FA-Gx3" firstAttribute="top" secondItem="hvx-bE-3eg" secondAttribute="topMargin" constant="-8" id="0VJ-8N-eG2"/>
+                                                <constraint firstItem="aPb-FA-Gx3" firstAttribute="top" secondItem="uup-cb-rbF" secondAttribute="top" id="2ac-f2-H3m"/>
+                                                <constraint firstItem="aPb-FA-Gx3" firstAttribute="leading" secondItem="hvx-bE-3eg" secondAttribute="leadingMargin" id="7LE-xc-BeK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="aPb-FA-Gx3" secondAttribute="bottom" constant="-14.5" id="DIs-50-ETn"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3uy-wM-xa8" secondAttribute="bottom" constant="-7.5" id="Tia-VC-hB1"/>
+                                                <constraint firstItem="3uy-wM-xa8" firstAttribute="leading" secondItem="uup-cb-rbF" secondAttribute="leading" id="ZbS-SH-OMd"/>
+                                                <constraint firstItem="3uy-wM-xa8" firstAttribute="top" secondItem="uup-cb-rbF" secondAttribute="bottom" constant="1" id="bh9-os-7bl"/>
+                                                <constraint firstItem="uup-cb-rbF" firstAttribute="trailing" secondItem="3uy-wM-xa8" secondAttribute="trailing" id="lSp-AA-a2M"/>
+                                                <constraint firstItem="uup-cb-rbF" firstAttribute="leading" secondItem="aPb-FA-Gx3" secondAttribute="trailing" constant="8" symbolic="YES" id="uIw-Hn-rtr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="idLabel" destination="3uy-wM-xa8" id="NS0-nq-Dcx"/>
+                                            <outlet property="partImage" destination="hvx-bE-3eg" id="iVt-6t-yaB"/>
+                                            <outlet property="titleLabel" destination="uup-cb-rbF" id="84h-QF-GMT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="d56-hR-EWC"/>
+                                    </mask>
+                                </variation>
+                            </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHi-xN-eDP">
+                                <rect key="frame" x="20" y="14" width="461" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llT-qx-9tk">
+                                <rect key="frame" x="489" y="14" width="91" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="e8n-WL-3ty"/>
+                                </constraints>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="neD-aS-p3z" eventType="touchUpInside" id="WaU-zY-1eU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1QM-Jo-dLp" firstAttribute="top" secondItem="LDU-V1-v0s" secondAttribute="bottom" constant="52" id="0Aq-tB-4br"/>
+                            <constraint firstItem="llT-qx-9tk" firstAttribute="trailing" secondItem="6YQ-G6-VHu" secondAttribute="trailingMargin" id="5KU-Ux-aFM"/>
+                            <constraint firstItem="1QM-Jo-dLp" firstAttribute="leading" secondItem="6YQ-G6-VHu" secondAttribute="leadingMargin" id="FjB-je-D83"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="1QM-Jo-dLp" secondAttribute="bottom" constant="-44" id="Mm2-fy-VlA"/>
+                            <constraint firstItem="llT-qx-9tk" firstAttribute="leading" secondItem="IHi-xN-eDP" secondAttribute="trailing" constant="8" symbolic="YES" id="P9d-SO-FQM"/>
+                            <constraint firstItem="IHi-xN-eDP" firstAttribute="leading" secondItem="1QM-Jo-dLp" secondAttribute="leading" id="YkF-FM-Loc"/>
+                            <constraint firstItem="1QM-Jo-dLp" firstAttribute="bottom" secondItem="PNj-cH-6Ic" secondAttribute="top" id="ZC2-gt-k0V"/>
+                            <constraint firstItem="1QM-Jo-dLp" firstAttribute="top" secondItem="IHi-xN-eDP" secondAttribute="bottom" constant="8" symbolic="YES" id="hQk-D1-rs3"/>
+                            <constraint firstItem="llT-qx-9tk" firstAttribute="top" secondItem="IHi-xN-eDP" secondAttribute="top" id="oXd-oT-JmM"/>
+                            <constraint firstItem="IHi-xN-eDP" firstAttribute="top" secondItem="LDU-V1-v0s" secondAttribute="bottom" constant="14" id="oYL-OB-ylS"/>
+                            <constraint firstItem="llT-qx-9tk" firstAttribute="trailing" secondItem="1QM-Jo-dLp" secondAttribute="trailing" id="qqn-kD-cRX"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0Aq-tB-4br"/>
+                                <exclude reference="Mm2-fy-VlA"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem image="search.png" id="ggZ-da-S3F" userLabel="Search">
+                            <connections>
+                                <segue destination="neD-aS-p3z" kind="show" id="bUp-eU-lDV"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="I0w-Zc-PiR"/>
+                        <barButtonItem title="Sets" id="iey-at-Dhn">
+                            <connections>
+                                <segue destination="eNQ-ye-QbU" kind="show" id="Yqb-h8-iAF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8FO-Jt-0WQ"/>
+                        <barButtonItem image="email.png" id="vzJ-wd-lbj" userLabel="Feedback">
+                            <connections>
+                                <segue destination="sbC-lT-raX" kind="show" id="a7c-Yy-geo"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="Mul-kE-brU"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>
+                    <connections>
+                        <outlet property="resultsTable" destination="1QM-Jo-dLp" id="edn-4V-u63"/>
+                        <outlet property="searchInput" destination="IHi-xN-eDP" id="4TS-b7-brM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OQc-GL-55i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="395" y="-2213"/>
         </scene>
         <!--Feedback-->
         <scene sceneID="pGz-9O-DlQ">
@@ -635,6 +812,11 @@
                         </constraints>
                     </view>
                     <toolbarItems>
+                        <barButtonItem image="search.png" id="NjN-bR-92r" userLabel="Search">
+                            <connections>
+                                <segue destination="neD-aS-p3z" kind="show" id="fMR-0S-BVu"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="SrY-w0-hxX"/>
                         <barButtonItem title="Sets" id="CSE-W4-0G7">
                             <connections>
@@ -685,10 +867,12 @@
     <resources>
         <image name="default-placeholder-300x300.png" width="300" height="300"/>
         <image name="email.png" width="32" height="32"/>
+        <image name="search.png" width="32" height="32"/>
         <image name="sorting.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tth-vg-6xW"/>
-        <segue reference="1US-BF-S9d"/>
+        <segue reference="Yqb-h8-iAF"/>
+        <segue reference="5iA-Qa-IV9"/>
+        <segue reference="a7c-Yy-geo"/>
     </inferredMetricsTieBreakers>
 </document>

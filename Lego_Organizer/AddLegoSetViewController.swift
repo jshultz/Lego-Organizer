@@ -34,8 +34,6 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func saveSet(sender: AnyObject) {
         
-        
-        
         if self.setId.text != "" {
             Alamofire.request(.GET, "https://rebrickable.com/api/get_set", parameters: [
                 "key": "9BUbjlV9IF",
