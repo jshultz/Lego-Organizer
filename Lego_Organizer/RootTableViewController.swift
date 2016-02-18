@@ -127,8 +127,6 @@ class RootTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        print("array[indexPath.row] : ", array[indexPath.row])
-        
         let cellIdentifier = "LegoSetTableViewCell"
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! LegoSetTableViewCell
@@ -192,7 +190,6 @@ class RootTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            print("array[indexPath.row]:", array[indexPath.row])
             realm.beginWrite()
             realm.delete(array[indexPath.row] as Object)
             try! realm.commitWrite()

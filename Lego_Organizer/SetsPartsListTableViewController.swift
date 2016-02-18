@@ -29,8 +29,6 @@ class SetsPartsListTableViewController: UITableViewController {
         
         self.tableView.backgroundColor = UIColor.orangeColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-
-        
         
         if profile?.userHash != "" {
             
