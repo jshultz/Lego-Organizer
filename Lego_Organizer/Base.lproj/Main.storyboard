@@ -136,15 +136,15 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="30" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default-placeholder-300x300.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gsh-Gq-VZ4">
-                                            <rect key="frame" x="17" y="4" width="40" height="40"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfs-JM-YKN">
                                             <rect key="frame" x="77" y="23" width="515" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" tag="30" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default-placeholder-300x300.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gsh-Gq-VZ4">
+                                            <rect key="frame" x="17" y="4" width="40" height="40"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -663,19 +663,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uy-wM-xa8">
-                                                    <rect key="frame" x="66" y="22" width="42" height="21"/>
+                                                    <rect key="frame" x="66" y="22" width="486" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uup-cb-rbF">
-                                                    <rect key="frame" x="66" y="0.0" width="42" height="21"/>
+                                                    <rect key="frame" x="66" y="0.0" width="486" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="OzB-v1-IMh"/>
-                                                        <constraint firstAttribute="width" constant="42" id="XUM-Dd-QHn"/>
+                                                        <constraint firstAttribute="width" constant="486" id="XUM-Dd-QHn"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -693,7 +693,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="idLabel" destination="3uy-wM-xa8" id="NS0-nq-Dcx"/>
-                                            <outlet property="partImage" destination="hvx-bE-3eg" id="iVt-6t-yaB"/>
+                                            <outlet property="partImageView" destination="aPb-FA-Gx3" id="BPk-Tu-auf"/>
                                             <outlet property="titleLabel" destination="uup-cb-rbF" id="84h-QF-GMT"/>
                                         </connections>
                                     </tableViewCell>
@@ -872,7 +872,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Yqb-h8-iAF"/>
-        <segue reference="pWh-cq-aVe"/>
+        <segue reference="gNj-9v-uaZ"/>
         <segue reference="a7c-Yy-geo"/>
     </inferredMetricsTieBreakers>
 </document>

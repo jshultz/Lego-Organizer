@@ -166,6 +166,7 @@ class RootTableViewController: UITableViewController {
                 getDataFromUrl(checkedUrl) { (data, response, error)  in
                     dispatch_async(dispatch_get_main_queue()) { () -> Void in
                         guard let data = data where error == nil else { return }
+                        
                         cell.photoImageView.image = UIImage(data: data)
                     }
                 }

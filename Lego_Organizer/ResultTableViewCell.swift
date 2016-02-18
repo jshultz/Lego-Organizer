@@ -14,8 +14,7 @@ class ResultTableViewCell: UITableViewCell {
     
     @IBOutlet var idLabel: UILabel!
     
-    @IBOutlet var partImage: UIView!
-    
+    @IBOutlet var partImageView: UIImageView!
     
 
 }

@@ -44,9 +44,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                                 
                                 
                                 if let data:JSON = JSON(jsonObj["results"].arrayValue) {
-                                    print( "in this spot")
                                     self.results = data
-                                    print("data: ", data)
                                     self.resultsTable.reloadData()
                                 }
                                 
@@ -86,29 +84,30 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         let object = results[indexPath.row]
         
-        print("object: ", object)
+//        print("object: ", object)
         
-        cell.titleLabel.text = "hello"
-                
-//        cell.titleLabel.text = object.set_id
+        cell.idLabel.text = object["set_id"].string
         
-        cell.partImage.contentMode = .ScaleAspectFit
+        cell.titleLabel.text = object["descr"].string
+        
+        cell.partImageView.contentMode = .ScaleAspectFit
         
         let imageView = UIImageView(frame: CGRectMake(10, 10, cell.frame.width - 10, cell.frame.height - 10))
         
         imageView.contentMode = .ScaleAspectFit
-        
-//        if let checkedUrl = NSURL(string: "\(img_url)") {
-//            thumbnail!.contentMode = .ScaleAspectFit
-//            
-//            getDataFromUrl(checkedUrl) { (data, response, error)  in
-//                
-//                dispatch_async(dispatch_get_main_queue()) { () -> Void in
-//                    guard let data = data where error == nil else { return }
-//                    thumbnail!.image = UIImage(data: data)
-//                }
-//            }
-//        }
+                
+        if let checkedUrl = NSURL(string: "\(object["img_tn"].string!)") {
+            cell.partImageView.contentMode = .ScaleAspectFit
+            
+            getDataFromUrl(checkedUrl) { (data, response, error)  in
+                
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    guard let data = data where error == nil else { return }
+                    
+                    cell.partImageView.image = UIImage(data: data)
+                }
+            }
+        }
         
         return cell
     }
