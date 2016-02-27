@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
-
+import CoreData
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -18,6 +18,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var resultsTable: UITableView!
     
     @IBOutlet var searchInput: UITextField!
+    
+    @IBOutlet var searchButtonStyle: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +68,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         self.title = "Search"
         self.resultsTable.delegate = self
         self.resultsTable.dataSource = self
+        self.resultsTable.backgroundColor = UIColor(red: 0.2706, green: 0.3412, blue: 0.9098, alpha: 1.0) /* #4557e8 */
+        self.resultsTable.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.view?.backgroundColor = UIColor(red: 0.4471, green: 0.3451, blue: 1, alpha: 1.0) /* #7258ff */
+        self.searchButtonStyle.tintColor = UIColor.whiteColor()
     }
     
     // MARK:  UITextFieldDelegate Methods
@@ -81,6 +88,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let cellIdentifier = "ResultTableViewCell"
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ResultTableViewCell
+        
+        cell.backgroundColor = UIColor(red: 0.2941, green: 0.5608, blue: 1, alpha: 1.0) /* #4b8fff */
+
         
         let object = results[indexPath.row]
         
@@ -122,6 +132,22 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showLego" {
+            let searchResultController = segue.destinationViewController as! SearchResultViewController
+            let indexPath = resultsTable.indexPathForSelectedRow!
+            let legoSet = results[indexPath.row]
+            searchResultController.legoSet = legoSet
+            let destinationTitle = legoSet["descr"].string!
+            searchResultController.title = destinationTitle
+            
+            
+        }
     }
     
 

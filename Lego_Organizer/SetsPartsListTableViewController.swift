@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import SwiftyJSON
 import Alamofire
 
@@ -15,11 +14,9 @@ class SetsPartsListTableViewController: UITableViewController {
     
     var setId:JSON = nil
     var datas: JSON = []
-    let realm = try! Realm()
     var activePart = -1
-    var profile:Profile? = nil
     
-    var legoSet:Set? = nil
+    var legoSet: LegoSets? = nil
     
     @IBOutlet var legoTable: UITableView!
     
@@ -27,16 +24,13 @@ class SetsPartsListTableViewController: UITableViewController {
     func setupUI() {
         self.title = "Brickly: Parts List"
         
-        self.tableView.backgroundColor = UIColor.orangeColor()
+        self.tableView.backgroundColor = UIColor(red: 0.2706, green: 0.3412, blue: 0.9098, alpha: 1.0) /* #4557e8 */
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
-        if profile?.userHash != "" {
-            
-            
-            Alamofire.request(.GET, "https://rebrickable.com/api/get_set_parts", parameters: [
-                "key": "9BUbjlV9IF",
-                "set" : (self.legoSet?.set_id)!,
-                "format": "json"]).validate().responseJSON { response in
+        Alamofire.request(.GET, "https://rebrickable.com/api/get_set_parts", parameters: [
+            "key": "9BUbjlV9IF",
+            "set" : (self.legoSet?.set_id)!,
+            "format": "json"]).validate().responseJSON { response in
                 switch response.result {
                 case .Success:
                     if response.result.value != nil {
@@ -51,8 +45,6 @@ class SetsPartsListTableViewController: UITableViewController {
                 case .Failure(let error):
                     print(error)
                 }
-            }
-            
         }
         
     }
@@ -106,7 +98,7 @@ class SetsPartsListTableViewController: UITableViewController {
         
         Title.textColor = UIColor.whiteColor()
         subTitle.textColor = UIColor.whiteColor()
-        cell.backgroundColor = UIColor(red: 0.7176, green: 0.1647, blue: 0.2, alpha: 1.0) /* #b72a33 */
+        cell.backgroundColor = UIColor(red: 0.2941, green: 0.5608, blue: 1, alpha: 1.0) /* #4b8fff */
         
         let object = datas[indexPath.row]
         

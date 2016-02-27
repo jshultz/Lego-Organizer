@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import SwiftyJSON
 import Alamofire
 
@@ -15,8 +14,8 @@ class PartDetailViewController: UIViewController {
     
     var partId:JSON = nil
     
-    let legoSet:Set? = nil
-        
+//    let legoSet:Set? = nil
+    
     @IBOutlet weak var partNameLabel: UILabel!
     
     @IBOutlet weak var partImage: UIImageView!
@@ -40,7 +39,7 @@ class PartDetailViewController: UIViewController {
         
         self.title = "Brickly: Part Detail View"
         
-        self.view?.backgroundColor = UIColor.orangeColor()
+        self.view?.backgroundColor = UIColor(red: 0.4471, green: 0.3451, blue: 1, alpha: 1.0) /* #7258ff */
         self.partNameLabel.textColor = UIColor.whiteColor()
         self.partDescription.tintColor = UIColor.whiteColor()
         self.partDescription.textColor = UIColor.whiteColor()

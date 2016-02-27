@@ -7,9 +7,19 @@ class MailViewController: UIViewController, MFMailComposeViewControllerDelegate 
     
     @IBOutlet weak var emailContents: UITextView!
     
+    @IBOutlet var instructionsLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+    }
+    
+    func setupUI() {
+        self.view?.backgroundColor = UIColor.orangeColor()
+        
+        self.instructionsLabel.textColor = UIColor.whiteColor()
         emailContents.layer.borderColor = UIColor.blackColor().CGColor;
         emailContents.layer.borderWidth = 1.5
         emailContents.layer.cornerRadius = 5.0

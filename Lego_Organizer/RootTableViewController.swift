@@ -7,17 +7,11 @@
 //
 
 import UIKit
-import RealmSwift
 import SwiftyJSON
 import Alamofire
+import CoreData
 
-class RootTableViewController: UITableViewController {
-    
-    let realm = try! Realm()
-    
-    var profile:Profile? = nil
-    var set:Set? = nil
-    var array = try! Realm().objects(Set).sorted("descr", ascending: true)
+class RootTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var apiKey:String = ""
     
@@ -25,12 +19,13 @@ class RootTableViewController: UITableViewController {
     
     var activeSet = -1
     
-//    var datas: [JSON] = []
     var datas: JSON = []
     
-    var notificationToken: NotificationToken?
-    
     @IBOutlet var legoTable: UITableView!
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,31 +49,59 @@ class RootTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        let numberOfSections = fetchedResultController.sections?.count
+        return numberOfSections!
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return array.count
+        let numberOfRowsInSection = fetchedResultController.sections?[section].numberOfObjects
+        return numberOfRowsInSection!
     }
     
     override func viewWillAppear(animated: Bool) {
-        notificationToken = realm.addNotificationBlock { [unowned self] note, realm in
-            if let profile = realm.objects(Profile).first {
-                self.profile = profile
-            }
-        }
+
     }
     
     @IBAction func showSortOptions(sender: AnyObject) {
         showSorting("Sort Sets", errorMessage: "Sort Sets by either Name or Number.")
     }
     
+    // MARK:- Retrieve LegoSets
+    
+    let sortBy = ""
+    
+    func getFetchedResultController(sortBy:String) -> NSFetchedResultsController {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: legoSetFetchRequest(sortBy), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
+    }
+    
+    func legoSetFetchRequest(sortBy:String) -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "LegoSets")
+        
+        var sortDescriptor = NSSortDescriptor()
+        if (sortBy == "description") {
+            sortDescriptor = NSSortDescriptor(key: "descr", ascending: true)
+        } else {
+            sortDescriptor = NSSortDescriptor(key: "set_id", ascending: true)
+        }
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+    
     func setupUI() {
         self.title = "Lego Organizer"
         
-        self.tableView.backgroundColor = UIColor.orangeColor()
+        self.tableView.backgroundColor = UIColor(red: 0.2706, green: 0.3412, blue: 0.9098, alpha: 1.0) /* #4557e8 */
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        fetchedResultController = getFetchedResultController("description")
+        fetchedResultController.delegate = self
+        do {
+            try fetchedResultController.performFetch()
+        } catch _ {
+        }
         
     }
     
@@ -105,7 +128,14 @@ class RootTableViewController: UITableViewController {
         
         let firstAction = UIAlertAction(title: "Sort by Set Name", style: .Default) { (alert: UIAlertAction!) -> Void in
             NSLog("Sorting by Name")
-            self.array = try! Realm().objects(Set).sorted("descr", ascending: true)
+            
+            self.fetchedResultController = self.getFetchedResultController("description")
+            self.fetchedResultController.delegate = self
+            do {
+                try self.fetchedResultController.performFetch()
+            } catch _ {
+            }
+            
             self.tableView.reloadData()
         } // 3
         
@@ -114,7 +144,13 @@ class RootTableViewController: UITableViewController {
         let secondAction = UIAlertAction(title: "Sort by Set Number", style: .Default) { (alert: UIAlertAction!) -> Void in
             NSLog("Sorting by Number")
             
-            self.array = try! Realm().objects(Set).sorted("set_id", ascending: true)
+            self.fetchedResultController = self.getFetchedResultController("set_id")
+            self.fetchedResultController.delegate = self
+            do {
+                try self.fetchedResultController.performFetch()
+            } catch _ {
+            }
+            
             self.tableView.reloadData()
             
         } // 2
@@ -133,34 +169,31 @@ class RootTableViewController: UITableViewController {
         
         cell.titleLabel.textColor = UIColor.whiteColor()
         cell.descriptionLabel.textColor = UIColor.whiteColor()
-        cell.backgroundColor = UIColor(red: 0.7176, green: 0.1647, blue: 0.2, alpha: 1.0) /* #b72a33 */
+        cell.backgroundColor = UIColor(red: 0.2941, green: 0.5608, blue: 1, alpha: 1.0) /* #4b8fff */
+                
+        let legoSet = fetchedResultController.objectAtIndexPath(indexPath) as! LegoSets
         
-        let object = array[indexPath.row]
-        
-        cell.titleLabel.text = object.set_id
-        
-//        cell.textLabel?.text = object.set_id
+        cell.titleLabel.text = legoSet.valueForKey("set_id") as? String
         
         cell.photoImageView.contentMode = .ScaleAspectFit
         
-//        cell.photoImageView.frame = CGRect(x: 10, y:10, width: 40, height: 40)
-        
-        let myImageName = object.img_tn
-        let imagePath = fileInDocumentsDirectory(myImageName)
+        let myImageName = legoSet.valueForKey("img_tn") as? String
+        let imagePath = fileInDocumentsDirectory(myImageName!)
         
         let checkImage = NSFileManager.defaultManager()
         
         if (checkImage.fileExistsAtPath(imagePath)) {
             
             if let _ = loadImageFromPath(imagePath) {
-                if object.img_tn != "" {
+                if legoSet.valueForKey("img_tn") as? String != "" {
                     cell.photoImageView.image = loadImageFromPath(imagePath)
                 }
             } else { print("some error message 2") }
             
             
         } else {
-            if let checkedUrl = NSURL(string: "\(object.img_tn)") {
+            let checked_url = legoSet.valueForKey("img_tn") as? String
+            if let checkedUrl = NSURL(string: "\(checked_url)") {
                 cell.photoImageView.contentMode = .ScaleAspectFit
             
                 getDataFromUrl(checkedUrl) { (data, response, error)  in
@@ -173,7 +206,7 @@ class RootTableViewController: UITableViewController {
             }
         }
 
-        cell.descriptionLabel.text = object.descr
+        cell.descriptionLabel.text = legoSet.valueForKey("descr") as? String
         
         return cell
     }
@@ -191,14 +224,25 @@ class RootTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            realm.beginWrite()
-            realm.delete(array[indexPath.row] as Object)
-            try! realm.commitWrite()
-            self.tableView.reloadData()
+            
+            let managedObject:NSManagedObject = fetchedResultController.objectAtIndexPath(indexPath) as! NSManagedObject
+            managedObjectContext.deleteObject(managedObject)
+            do {
+                try managedObjectContext.save()
+            } catch _ {
+            }
+            
+
             
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
+    }
+    
+    // MARK: - TableView Refresh
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.reloadData()
     }
 
 
@@ -237,11 +281,10 @@ class RootTableViewController: UITableViewController {
             let cell = sender as! UITableViewCell
             let indexPath = legoTable.indexPathForCell(cell)
             
-            let legoSetController:LegoSetViewController = segue.destinationViewController as! LegoSetViewController
-            
-            let legoSet = self.array[indexPath!.row]
-            
-            legoSetController.legoSet = legoSet 
+            //          let cell = sender as! UITableViewCell
+            let legoSetViewController:LegoSetViewController = segue.destinationViewController as! LegoSetViewController
+            let legoSet:LegoSets = fetchedResultController.objectAtIndexPath(indexPath!) as! LegoSets
+            legoSetViewController.legoSet = legoSet
         }
         
 //        self.title = ""

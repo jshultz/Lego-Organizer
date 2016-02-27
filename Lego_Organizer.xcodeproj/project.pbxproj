@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		3ACC6B10394DCD75B3021376 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE0DCB44D9B102669C5DACC3 /* Pods.framework */; };
-		DE2586D91C1542AB001957DB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2586D81C1542AB001957DB /* Profile.swift */; };
+		DE19AE9B1C7CA4FD0070D6DC /* LegoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE19AE991C7CA4FD0070D6DC /* LegoModel.xcdatamodeld */; };
+		DE22C30A1C7F3A560046FA99 /* LegoSets+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22C3081C7F3A560046FA99 /* LegoSets+CoreDataProperties.swift */; };
+		DE22C30B1C7F3A560046FA99 /* LegoSets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22C3091C7F3A560046FA99 /* LegoSets.swift */; };
 		DE25D7B91C331185007B00C3 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE25D7B81C331185007B00C3 /* NavigationViewController.swift */; };
 		DE2AD8751C2B22DC00F969D3 /* PartVariantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AD8741C2B22DC00F969D3 /* PartVariantsTableViewController.swift */; };
 		DE4954051C152C050009775B /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4954041C152C050009775B /* RootTableViewController.swift */; };
-		DE4954071C1537D50009775B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4954061C1537D50009775B /* ProfileViewController.swift */; };
 		DE5ABD021C51AA4000E3A162 /* MyImageBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5ABD011C51AA4000E3A162 /* MyImageBlob.swift */; };
+		DE5FF7721C78B6E200D0B658 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5FF7711C78B6E200D0B658 /* SearchResultViewController.swift */; };
 		DE7722D11C1DC75D003D443F /* default-placeholder-300x300.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7722D01C1DC75D003D443F /* default-placeholder-300x300.png */; };
 		DE7722D31C1DE6D9003D443F /* LegoSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7722D21C1DE6D9003D443F /* LegoSetViewController.swift */; };
 		DE7722D51C1E15F7003D443F /* SetsPartsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7722D41C1E15F7003D443F /* SetsPartsListTableViewController.swift */; };
 		DE7722D71C1E2DA0003D443F /* PartDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7722D61C1E2DA0003D443F /* PartDetailViewController.swift */; };
-		DE7A48DB1C3824FB00F57A35 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7A48DA1C3824FB00F57A35 /* Set.swift */; };
 		DE908AA01C15024600DE3F13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE908A9F1C15024600DE3F13 /* AppDelegate.swift */; };
 		DE908AA51C15024600DE3F13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE908AA31C15024600DE3F13 /* Main.storyboard */; };
 		DE908AA71C15024600DE3F13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE908AA61C15024600DE3F13 /* Assets.xcassets */; };
@@ -38,17 +39,18 @@
 /* Begin PBXFileReference section */
 		3EA6890070EF5BA1F462065E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9253A31D0FD47EEBC55B7755 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		DE2586D81C1542AB001957DB /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		DE19AE9A1C7CA4FD0070D6DC /* LegoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LegoModel.xcdatamodel; sourceTree = "<group>"; };
+		DE22C3081C7F3A560046FA99 /* LegoSets+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "LegoSets+CoreDataProperties.swift"; path = "Lego_Organizer/LegoSets+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DE22C3091C7F3A560046FA99 /* LegoSets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LegoSets.swift; path = Lego_Organizer/LegoSets.swift; sourceTree = "<group>"; };
 		DE25D7B81C331185007B00C3 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		DE2AD8741C2B22DC00F969D3 /* PartVariantsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartVariantsTableViewController.swift; sourceTree = "<group>"; };
 		DE4954041C152C050009775B /* RootTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
-		DE4954061C1537D50009775B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DE5ABD011C51AA4000E3A162 /* MyImageBlob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImageBlob.swift; sourceTree = "<group>"; };
+		DE5FF7711C78B6E200D0B658 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		DE7722D01C1DC75D003D443F /* default-placeholder-300x300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-placeholder-300x300.png"; sourceTree = "<group>"; };
 		DE7722D21C1DE6D9003D443F /* LegoSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegoSetViewController.swift; sourceTree = "<group>"; };
 		DE7722D41C1E15F7003D443F /* SetsPartsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetsPartsListTableViewController.swift; sourceTree = "<group>"; };
 		DE7722D61C1E2DA0003D443F /* PartDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartDetailViewController.swift; sourceTree = "<group>"; };
-		DE7A48DA1C3824FB00F57A35 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		DE908A9C1C15024600DE3F13 /* Brickly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brickly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE908A9F1C15024600DE3F13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE908AA41C15024600DE3F13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,8 +94,9 @@
 		DE2586D71C154250001957DB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DE2586D81C1542AB001957DB /* Profile.swift */,
-				DE7A48DA1C3824FB00F57A35 /* Set.swift */,
+				DE19AE991C7CA4FD0070D6DC /* LegoModel.xcdatamodeld */,
+				DE22C3081C7F3A560046FA99 /* LegoSets+CoreDataProperties.swift */,
+				DE22C3091C7F3A560046FA99 /* LegoSets.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -148,11 +151,11 @@
 				DE25D7B81C331185007B00C3 /* NavigationViewController.swift */,
 				DE7722D61C1E2DA0003D443F /* PartDetailViewController.swift */,
 				DE2AD8741C2B22DC00F969D3 /* PartVariantsTableViewController.swift */,
-				DE4954061C1537D50009775B /* ProfileViewController.swift */,
 				DE4954041C152C050009775B /* RootTableViewController.swift */,
 				DE7722D41C1E15F7003D443F /* SetsPartsListTableViewController.swift */,
 				DEDFFF251C729B1A002D2851 /* SearchViewController.swift */,
 				DEC86D011C7423F4007EB4E9 /* ResultTableViewCell.swift */,
+				DE5FF7711C78B6E200D0B658 /* SearchResultViewController.swift */,
 			);
 			path = Lego_Organizer;
 			sourceTree = "<group>";
@@ -295,20 +298,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEDFFF261C729B1A002D2851 /* SearchViewController.swift in Sources */,
+				DE22C30B1C7F3A560046FA99 /* LegoSets.swift in Sources */,
 				DE7722D31C1DE6D9003D443F /* LegoSetViewController.swift in Sources */,
-				DE4954071C1537D50009775B /* ProfileViewController.swift in Sources */,
 				DE5ABD021C51AA4000E3A162 /* MyImageBlob.swift in Sources */,
-				DE2586D91C1542AB001957DB /* Profile.swift in Sources */,
 				DE7722D71C1E2DA0003D443F /* PartDetailViewController.swift in Sources */,
+				DE19AE9B1C7CA4FD0070D6DC /* LegoModel.xcdatamodeld in Sources */,
 				DEC86D021C7423F4007EB4E9 /* ResultTableViewCell.swift in Sources */,
 				DEFBA8F71C1E5CD900CD4FB3 /* AddLegoSetViewController.swift in Sources */,
+				DE22C30A1C7F3A560046FA99 /* LegoSets+CoreDataProperties.swift in Sources */,
 				DE908AA01C15024600DE3F13 /* AppDelegate.swift in Sources */,
 				DE2AD8751C2B22DC00F969D3 /* PartVariantsTableViewController.swift in Sources */,
 				DEB62B091C3F5ADF00899E0A /* EmailViewController.swift in Sources */,
 				DE4954051C152C050009775B /* RootTableViewController.swift in Sources */,
 				DE25D7B91C331185007B00C3 /* NavigationViewController.swift in Sources */,
+				DE5FF7721C78B6E200D0B658 /* SearchResultViewController.swift in Sources */,
 				DEE554BC1C6E953400CD4502 /* LegoSetTableViewCell.swift in Sources */,
-				DE7A48DB1C3824FB00F57A35 /* Set.swift in Sources */,
 				DE7722D51C1E15F7003D443F /* SetsPartsListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +474,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DE19AE991C7CA4FD0070D6DC /* LegoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DE19AE9A1C7CA4FD0070D6DC /* LegoModel.xcdatamodel */,
+			);
+			currentVersion = DE19AE9A1C7CA4FD0070D6DC /* LegoModel.xcdatamodel */;
+			path = LegoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DE908A941C15024600DE3F13 /* Project object */;
 }

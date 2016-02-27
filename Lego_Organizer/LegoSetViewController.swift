@@ -7,23 +7,15 @@
 //
 
 import UIKit
-import RealmSwift
 import SwiftyJSON
 import Alamofire
+import CoreData
 
 class LegoSetViewController: UIViewController {
     
-    let realm = try! Realm()
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    var profile:Profile? = nil
-    
-    var apiKey:String = ""
-    
-    var userSets:NSArray = []
-    
-    var activeSet = -1
-    
-    var legoSet:Set? = nil
+    var legoSet: LegoSets? = nil
     
 
     @IBOutlet weak var setNumberLabel: UILabel!
@@ -81,9 +73,9 @@ class LegoSetViewController: UIViewController {
     
     func setupUI() {
         
-        print("self.legoSet? : ", self.legoSet)
+//        print("self.legoSet? : ", self.legoSet)
         
-        self.view?.backgroundColor = UIColor.orangeColor()
+        self.view?.backgroundColor = UIColor(red: 0.4471, green: 0.3451, blue: 1, alpha: 1.0) /* #7258ff */
         self.setNameLabel.textColor = UIColor.whiteColor()
         self.setDescriptionLabel.textColor = UIColor.whiteColor()
         
@@ -92,19 +84,19 @@ class LegoSetViewController: UIViewController {
         
         self.setNameLabel.text = (self.legoSet?.set_id)! + " " +  (self.legoSet?.descr)!
         
-        let pieces:String = (self.legoSet?.pieces)!
+        let pieces:String = String((self.legoSet?.pieces)!)
         
-        let year:String = (self.legoSet?.year)!
+        let year:String = String((self.legoSet?.year)!)
         
-        self.setDescriptionLabel.text = "Set consists of \(pieces) pieces and was first produced in \(year). "
+        let qty:String = String((self.legoSet?.qty)!)
+        
+        self.setDescriptionLabel.text = "Set consists of \(pieces) pieces and was first produced in \(year). You currently own \(qty) set(s)."
         
         let imageView = self.setImage as UIImageView
-        
-        let img_url:String = (self.legoSet?.img_sm)!
-        
+                
         imageView.contentMode = .ScaleAspectFit
         
-        let myImageName = self.legoSet?.img_sm
+        let myImageName = self.legoSet?.img_big
         let imagePath = fileInDocumentsDirectory(myImageName!)
         
         let checkImage = NSFileManager.defaultManager()
@@ -117,8 +109,7 @@ class LegoSetViewController: UIViewController {
                     imageView.image = loadImageFromPath(imagePath)
                 }
             } else { print("some error message 2") }
-            
-            
+        
         } else {
             let img_url:String = (self.legoSet?.img_sm)!
             

@@ -7,15 +7,11 @@
 //
 
 import UIKit
-import RealmSwift
 import SwiftyJSON
 import Alamofire
+import CoreData
 
-class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    let realm = try! Realm()
-    
-    var profile:Profile? = nil
+class AddLegoSetViewController: UIViewController {
     
     var apiKey:String = ""
     
@@ -46,66 +42,98 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
                             
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 
+                                print("jsonObj: ", jsonObj)
+                                
                                 let img_sm_file_name = "\(self.randomStringWithLength(10)).jpg"
                                 let img_tn_file_name = "\(self.randomStringWithLength(10)).jpg"
+                                let img_bg_file_name = "\(self.randomStringWithLength(10)).jpg"
                                                                 
                                 let getImageSM =  UIImage(data: NSData(contentsOfURL: NSURL(string:  (jsonObj[0]["img_sm"].string!))!)!)
                                 let getImageTN =  UIImage(data: NSData(contentsOfURL: NSURL(string:  (jsonObj[0]["img_tn"].string!))!)!)
+                                let getImageBG =  UIImage(data: NSData(contentsOfURL: NSURL(string:  (jsonObj[0]["img_big"].string!))!)!)
+                                
                                 UIImageJPEGRepresentation(getImageSM!, 100)!.writeToFile(self.fileInDocumentsDirectory("\(img_sm_file_name)"), atomically: true)
                                 UIImageJPEGRepresentation(getImageTN!, 100)!.writeToFile(self.fileInDocumentsDirectory("\(img_tn_file_name)"), atomically: true)
+                                UIImageJPEGRepresentation(getImageBG!, 100)!.writeToFile(self.fileInDocumentsDirectory("\(img_bg_file_name)"), atomically: true)
                                 
-                                // Get realm and table instances for this thread
-                                let realm = try! Realm()
-                                
-                                let set_id:String = jsonObj[0]["set_id"].string!
-                                
-                                let updatedItem = realm.objects(Set).filter(NSPredicate(format: "set_id = %@", "\(set_id)")).first
                                 // Break up the writing blocks into smaller portions
                                 // by starting a new transaction
                                 for _ in 0..<1 {
-                                    realm.beginWrite()
                                     
                                     // Add row via dictionary. Property order is ignored.
                                     for _ in 0..<1 {
+                                        
+                                        var qty:NSNumber = 1
+                                        
+                                        if (self.setQuantity.text != "") {
+                                            qty = Int(self.setQuantity.text!)!
+                                        } else {
+                                            
+                                        }
                                         
                                         let set_id:String = jsonObj[0]["set_id"].string!
                                         let descr:String = jsonObj[0]["descr"].string!
                                         let img_sm:String = img_sm_file_name
                                         let img_tn:String = img_tn_file_name
-                                        let pieces:String = jsonObj[0]["pieces"].string!
-                                        let qty:String = self.setQuantity.text!
+                                        let img_big:String = img_bg_file_name
+                                        let pieces:NSNumber = Int(jsonObj[0]["pieces"].string!)!
                                         let theme:String = jsonObj[0]["theme"].string!
-                                        let year:String = jsonObj[0]["year"].string!
+                                        let year:NSNumber = Int(jsonObj[0]["year"].string!)!
                                         
-                                        if (updatedItem != nil) {
-                                            realm.create(Set.self, value: [
-                                                "id" : "\(updatedItem!.id)",
-                                                "set_id": "\(set_id)",
-                                                "descr": "\(descr)",
-                                                "img_sm": "\(img_sm)",
-                                                "img_tn": "\(img_tn)",
-                                                "pieces": "\(pieces)",
-                                                "qty": "\(qty)",
-                                                "theme": "\(theme)",
-                                                "year": "\(year)"
-                                                ], update: true)
-                                        } else {
-                                            realm.create(Set.self, value: [
-                                                "set_id": "\(set_id)",
-                                                "descr": "\(descr)",
-                                                "img_sm": "\(img_sm)",
-                                                "img_tn": "\(img_tn)",
-                                                "pieces": "\(pieces)",
-                                                "qty": "\(qty)",
-                                                "theme": "\(theme)",
-                                                "year": "\(year)"
-                                                ], update: true)
+                                        // create an app delegate variable
+                                        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                                        
+                                        // context is a handler for us to be able to access the database. this allows us to access the CoreData database.
+                                        let context: NSManagedObjectContext = appDel.managedObjectContext
+                                        
+                                        
+                                        // see if we are updating a LegoSet or not?
+                                        let request = NSFetchRequest(entityName: "LegoSets")
+                                        
+                                        // if we want to search for something in particular we can use predicates:
+                                        request.predicate = NSPredicate(format: "set_id = %@", jsonObj[0]["set_id"].string!) // search for users where username = Steve
+                                        
+                                        // by default, if we do a request and get some data back it returns false for the actual data. if we want to get data back and see it, then we need to set this as false.
+                                        request.returnsObjectsAsFaults = false
+                                        
+                                        do {
+                                            // save the results of our fetch request to a variable.
+                                            let results = try context.executeFetchRequest(request)
+                                            
+                                            if results.count > 0 {
+                                                
+                                                for result in results as! [NSManagedObject] {
+                                                    result.setValue(qty, forKey: "qty")
+                                                }
+                                                
+                                            } else {
+                                                // we are describing the Entity we want to insert the new user into. We are doing it for Entity Name Users. Then we tell it the context we want to insert it into, which we described previously.
+                                                let newSet = NSEntityDescription.insertNewObjectForEntityForName("LegoSets", inManagedObjectContext: context)
+                                                
+                                                newSet.setValue(set_id, forKey: "set_id")
+                                                newSet.setValue(descr, forKey: "descr")
+                                                newSet.setValue(img_sm, forKey: "img_sm")
+                                                newSet.setValue(img_tn, forKey: "img_tn")
+                                                newSet.setValue(img_big, forKey: "img_big")
+                                                newSet.setValue(pieces, forKey: "pieces")
+                                                newSet.setValue(qty, forKey: "qty")
+                                                newSet.setValue(theme, forKey: "theme")
+                                                newSet.setValue(year, forKey: "year")
+                                            }
+                                            
+                                        } catch {
+                                            
                                         }
+                                        
+                                        do {
+                                            // save the context.
+                                            try context.save()
+                                        } catch {
+                                            print("There was a problem")
+                                        }
+
                                     }
                                     
-                                    // Commit the write transaction
-                                    // to make this data available to other threads
-                                    try! realm.commitWrite()
                                     self.performSegueWithIdentifier("showLego", sender: self)
                                 }
                                 
@@ -173,51 +201,23 @@ class AddLegoSetViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     
     func setupUI() {
-        
+        self.view?.backgroundColor = UIColor(red: 0.4471, green: 0.3451, blue: 1, alpha: 1.0) /* #7258ff */
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        setListPicker.hidden = true
-        
-        //        self.view.addSubview(pickerView)
-        
         // Do any additional setup after loading the view.
+        setupUI()
     }
     
     override func viewWillAppear(animated: Bool) {
-        setupUI()
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    // The number of columns of data
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // The number of rows of data
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    // The data to return for the row and component (column) that's being passed in
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
-    
-    // Catpure the picker view selection
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // This method is triggered whenever the user makes a change to the picker selection.
-        // The parameter named row and component represents what was selected.
-        self.setList.text = self.pickerData[row]
-        //        print("self.pickerData: ", self.pickerData)
-        self.listID = Int(row)
-        //        print("row: ", row )
     }
     
     /*
