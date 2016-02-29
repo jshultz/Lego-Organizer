@@ -48,13 +48,11 @@ class RootTableViewController: UITableViewController, NSFetchedResultsController
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         let numberOfSections = fetchedResultController.sections?.count
         return numberOfSections!
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         let numberOfRowsInSection = fetchedResultController.sections?[section].numberOfObjects
         return numberOfRowsInSection!
     }
@@ -231,9 +229,7 @@ class RootTableViewController: UITableViewController, NSFetchedResultsController
                 try managedObjectContext.save()
             } catch _ {
             }
-            
 
-            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
